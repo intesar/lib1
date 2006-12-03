@@ -45,8 +45,8 @@
                                     <ui:label binding="#{Staff.label41}" id="label41" style="left: 24px; top: 96px; position: absolute" text="User Name"/>
                                     <ui:label binding="#{Staff.label42}" id="label42" style="left: 72px; top: 336px; position: absolute" text="Department"/>
                                     <ui:label binding="#{Staff.label43}" id="label43" style="left: 72px; top: 312px; position: absolute" text="Status"/>
-                                    <ui:textField binding="#{Staff.textField14}" id="textField14" style="left: 96px; top: 96px; position: absolute; width: 120px"/>
-                                    <ui:textField binding="#{Staff.textField15}" id="textField15" style="left: 96px; top: 120px; position: absolute; width: 120px"/>
+                                    <ui:textField binding="#{Staff.textField14}" id="textField14" style="left: 144px; top: 96px; position: absolute; width: 120px"/>
+                                    <ui:textField binding="#{Staff.textField15}" id="textField15" style="left: 144px; top: 120px; position: absolute; width: 120px"/>
                                     <ui:textField binding="#{Staff.textField16}" id="textField16" style="left: 144px; top: 144px; position: absolute; width: 120px"/>
                                     <ui:dropDown binding="#{Staff.dropDown4}" id="dropDown4" items="#{Staff.dropDown4DefaultOptions.options}" style="left: 168px; top: 264px; position: absolute"/>
                                     <ui:dropDown binding="#{Staff.dropDown5}" id="dropDown5" items="#{Staff.dropDown5DefaultOptions.options}" style="left: 456px; top: 144px; position: absolute"/>
