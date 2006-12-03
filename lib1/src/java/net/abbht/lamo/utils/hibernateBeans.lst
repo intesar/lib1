@@ -1,0 +1,13 @@
+net\abbht\lamo\persistence\users\User.hbm.xml
+net\abbht\lamo\persistence\users\Address.hbm.xml
+net\abbht\lamo\persistence\users\Authority.hbm.xml
+net\abbht\lamo\persistence\users\Phone.hbm.xml
+net\abbht\lamo\persistence\users\UserGroup.hbm.xml
+net\abbht\lamo\persistence\loans\Loan.hbm.xml
+net\abbht\lamo\persistence\loans\Payment.hbm.xml
+net\abbht\lamo\persistence\loans\Renew.hbm.xml
+net\abbht\lamo\persistence\items\Author.hbm.xml
+net\abbht\lamo\persistence\items\Department.hbm.xml
+net\abbht\lamo\persistence\items\Item.hbm.xml
+net\abbht\lamo\persistence\items\ItemGroup.hbm.xml
+net\abbht\lamo\persistence\items\ItemTypes.hbm.xml
