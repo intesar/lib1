@@ -31,7 +31,7 @@ public class ValidateRenew {
         if ( allowedDays <= 0 )
             throw new Exception("Days to Loan is less than 1 ");
         //creating dates
-        Long time = new java.util.Date().getTime();
+        long time = new java.util.Date().getTime();
         long oneDay = 24*60*60*1000;
         return time +  oneDay * allowedDays;
       

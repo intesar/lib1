@@ -384,6 +384,84 @@
     </target>
     <target name="do-dist" depends="init,compile,compile-jsps,-pre-dist,-do-dist-with-manifest,-do-dist-without-manifest"/>
     <target name="library-inclusion-in-manifest" depends="init" if="dist.ear.dir">
+        <basename property="included.lib.file.reference.antlr-2.7.6rc1.jar" file="${file.reference.antlr-2.7.6rc1.jar}"/>
+        <copy-ear-war file="${file.reference.antlr-2.7.6rc1.jar}" propname="included.lib.file.reference.antlr-2.7.6rc1.jar.X"/>
+        <basename property="included.lib.file.reference.asm.jar" file="${file.reference.asm.jar}"/>
+        <copy-ear-war file="${file.reference.asm.jar}" propname="included.lib.file.reference.asm.jar.X"/>
+        <basename property="included.lib.file.reference.cglib-2.1.3.jar" file="${file.reference.cglib-2.1.3.jar}"/>
+        <copy-ear-war file="${file.reference.cglib-2.1.3.jar}" propname="included.lib.file.reference.cglib-2.1.3.jar.X"/>
+        <basename property="included.lib.file.reference.commons-collections-2.1.1.jar" file="${file.reference.commons-collections-2.1.1.jar}"/>
+        <copy-ear-war file="${file.reference.commons-collections-2.1.1.jar}" propname="included.lib.file.reference.commons-collections-2.1.1.jar.X"/>
+        <basename property="included.lib.file.reference.commons-logging-1.0.4.jar" file="${file.reference.commons-logging-1.0.4.jar}"/>
+        <copy-ear-war file="${file.reference.commons-logging-1.0.4.jar}" propname="included.lib.file.reference.commons-logging-1.0.4.jar.X"/>
+        <basename property="included.lib.file.reference.concurrent-1.3.2.jar" file="${file.reference.concurrent-1.3.2.jar}"/>
+        <copy-ear-war file="${file.reference.concurrent-1.3.2.jar}" propname="included.lib.file.reference.concurrent-1.3.2.jar.X"/>
+        <basename property="included.lib.file.reference.dom4j-1.6.1.jar" file="${file.reference.dom4j-1.6.1.jar}"/>
+        <copy-ear-war file="${file.reference.dom4j-1.6.1.jar}" propname="included.lib.file.reference.dom4j-1.6.1.jar.X"/>
+        <basename property="included.lib.file.reference.ehcache-1.1.jar" file="${file.reference.ehcache-1.1.jar}"/>
+        <copy-ear-war file="${file.reference.ehcache-1.1.jar}" propname="included.lib.file.reference.ehcache-1.1.jar.X"/>
+        <basename property="included.lib.file.reference.hibernate3.jar" file="${file.reference.hibernate3.jar}"/>
+        <copy-ear-war file="${file.reference.hibernate3.jar}" propname="included.lib.file.reference.hibernate3.jar.X"/>
+        <basename property="included.lib.file.reference.jdbc2_0-stdext.jar" file="${file.reference.jdbc2_0-stdext.jar}"/>
+        <copy-ear-war file="${file.reference.jdbc2_0-stdext.jar}" propname="included.lib.file.reference.jdbc2_0-stdext.jar.X"/>
+        <basename property="included.lib.file.reference.jta.jar" file="${file.reference.jta.jar}"/>
+        <copy-ear-war file="${file.reference.jta.jar}" propname="included.lib.file.reference.jta.jar.X"/>
+        <basename property="included.lib.file.reference.log4j-1.2.11.jar" file="${file.reference.log4j-1.2.11.jar}"/>
+        <copy-ear-war file="${file.reference.log4j-1.2.11.jar}" propname="included.lib.file.reference.log4j-1.2.11.jar.X"/>
+        <basename property="included.lib.file.reference.mysql-connector-java-3.1.13-bin.jar" file="${file.reference.mysql-connector-java-3.1.13-bin.jar}"/>
+        <copy-ear-war file="${file.reference.mysql-connector-java-3.1.13-bin.jar}" propname="included.lib.file.reference.mysql-connector-java-3.1.13-bin.jar.X"/>
+        <basename property="included.lib.file.reference.spring-agent.jar" file="${file.reference.spring-agent.jar}"/>
+        <copy-ear-war file="${file.reference.spring-agent.jar}" propname="included.lib.file.reference.spring-agent.jar.X"/>
+        <basename property="included.lib.file.reference.spring-aop.jar" file="${file.reference.spring-aop.jar}"/>
+        <copy-ear-war file="${file.reference.spring-aop.jar}" propname="included.lib.file.reference.spring-aop.jar.X"/>
+        <basename property="included.lib.file.reference.spring-aspects.jar" file="${file.reference.spring-aspects.jar}"/>
+        <copy-ear-war file="${file.reference.spring-aspects.jar}" propname="included.lib.file.reference.spring-aspects.jar.X"/>
+        <basename property="included.lib.file.reference.spring-beans.jar" file="${file.reference.spring-beans.jar}"/>
+        <copy-ear-war file="${file.reference.spring-beans.jar}" propname="included.lib.file.reference.spring-beans.jar.X"/>
+        <basename property="included.lib.file.reference.spring-context.jar" file="${file.reference.spring-context.jar}"/>
+        <copy-ear-war file="${file.reference.spring-context.jar}" propname="included.lib.file.reference.spring-context.jar.X"/>
+        <basename property="included.lib.file.reference.spring-core.jar" file="${file.reference.spring-core.jar}"/>
+        <copy-ear-war file="${file.reference.spring-core.jar}" propname="included.lib.file.reference.spring-core.jar.X"/>
+        <basename property="included.lib.file.reference.spring-dao.jar" file="${file.reference.spring-dao.jar}"/>
+        <copy-ear-war file="${file.reference.spring-dao.jar}" propname="included.lib.file.reference.spring-dao.jar.X"/>
+        <basename property="included.lib.file.reference.spring-hibernate2.jar" file="${file.reference.spring-hibernate2.jar}"/>
+        <copy-ear-war file="${file.reference.spring-hibernate2.jar}" propname="included.lib.file.reference.spring-hibernate2.jar.X"/>
+        <basename property="included.lib.file.reference.spring-hibernate3.jar" file="${file.reference.spring-hibernate3.jar}"/>
+        <copy-ear-war file="${file.reference.spring-hibernate3.jar}" propname="included.lib.file.reference.spring-hibernate3.jar.X"/>
+        <basename property="included.lib.file.reference.spring-ibatis.jar" file="${file.reference.spring-ibatis.jar}"/>
+        <copy-ear-war file="${file.reference.spring-ibatis.jar}" propname="included.lib.file.reference.spring-ibatis.jar.X"/>
+        <basename property="included.lib.file.reference.spring-jca.jar" file="${file.reference.spring-jca.jar}"/>
+        <copy-ear-war file="${file.reference.spring-jca.jar}" propname="included.lib.file.reference.spring-jca.jar.X"/>
+        <basename property="included.lib.file.reference.spring-jdbc.jar" file="${file.reference.spring-jdbc.jar}"/>
+        <copy-ear-war file="${file.reference.spring-jdbc.jar}" propname="included.lib.file.reference.spring-jdbc.jar.X"/>
+        <basename property="included.lib.file.reference.spring-jdo.jar" file="${file.reference.spring-jdo.jar}"/>
+        <copy-ear-war file="${file.reference.spring-jdo.jar}" propname="included.lib.file.reference.spring-jdo.jar.X"/>
+        <basename property="included.lib.file.reference.spring-jms.jar" file="${file.reference.spring-jms.jar}"/>
+        <copy-ear-war file="${file.reference.spring-jms.jar}" propname="included.lib.file.reference.spring-jms.jar.X"/>
+        <basename property="included.lib.file.reference.spring-jmx.jar" file="${file.reference.spring-jmx.jar}"/>
+        <copy-ear-war file="${file.reference.spring-jmx.jar}" propname="included.lib.file.reference.spring-jmx.jar.X"/>
+        <basename property="included.lib.file.reference.spring-jpa.jar" file="${file.reference.spring-jpa.jar}"/>
+        <copy-ear-war file="${file.reference.spring-jpa.jar}" propname="included.lib.file.reference.spring-jpa.jar.X"/>
+        <basename property="included.lib.file.reference.spring-mock.jar" file="${file.reference.spring-mock.jar}"/>
+        <copy-ear-war file="${file.reference.spring-mock.jar}" propname="included.lib.file.reference.spring-mock.jar.X"/>
+        <basename property="included.lib.file.reference.spring-portlet.jar" file="${file.reference.spring-portlet.jar}"/>
+        <copy-ear-war file="${file.reference.spring-portlet.jar}" propname="included.lib.file.reference.spring-portlet.jar.X"/>
+        <basename property="included.lib.file.reference.spring-remoting.jar" file="${file.reference.spring-remoting.jar}"/>
+        <copy-ear-war file="${file.reference.spring-remoting.jar}" propname="included.lib.file.reference.spring-remoting.jar.X"/>
+        <basename property="included.lib.file.reference.spring-struts.jar" file="${file.reference.spring-struts.jar}"/>
+        <copy-ear-war file="${file.reference.spring-struts.jar}" propname="included.lib.file.reference.spring-struts.jar.X"/>
+        <basename property="included.lib.file.reference.spring-support.jar" file="${file.reference.spring-support.jar}"/>
+        <copy-ear-war file="${file.reference.spring-support.jar}" propname="included.lib.file.reference.spring-support.jar.X"/>
+        <basename property="included.lib.file.reference.spring-tomcat-weaver.jar" file="${file.reference.spring-tomcat-weaver.jar}"/>
+        <copy-ear-war file="${file.reference.spring-tomcat-weaver.jar}" propname="included.lib.file.reference.spring-tomcat-weaver.jar.X"/>
+        <basename property="included.lib.file.reference.spring-toplink.jar" file="${file.reference.spring-toplink.jar}"/>
+        <copy-ear-war file="${file.reference.spring-toplink.jar}" propname="included.lib.file.reference.spring-toplink.jar.X"/>
+        <basename property="included.lib.file.reference.spring-web.jar" file="${file.reference.spring-web.jar}"/>
+        <copy-ear-war file="${file.reference.spring-web.jar}" propname="included.lib.file.reference.spring-web.jar.X"/>
+        <basename property="included.lib.file.reference.spring-webmvc.jar" file="${file.reference.spring-webmvc.jar}"/>
+        <copy-ear-war file="${file.reference.spring-webmvc.jar}" propname="included.lib.file.reference.spring-webmvc.jar.X"/>
+        <basename property="included.lib.file.reference.spring.jar" file="${file.reference.spring.jar}"/>
+        <copy-ear-war file="${file.reference.spring.jar}" propname="included.lib.file.reference.spring.jar.X"/>
         <copy file="${libs.jsf-runtime.classpath.libfile.6}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <copy file="${libs.jsf-runtime.classpath.libfile.5}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <copy file="${libs.jsf-runtime.classpath.libfile.4}" todir="${build.web.dir.real}/WEB-INF/lib"/>
@@ -402,10 +480,51 @@
         <copy file="${libs.jstl11.classpath.libfile.2}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <copy file="${libs.jstl11.classpath.libfile.1}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <mkdir dir="${build.web.dir.real}/META-INF"/>
-        <manifest file="${build.web.dir.real}/META-INF/MANIFEST.MF" mode="update"/>
+        <manifest file="${build.web.dir.real}/META-INF/MANIFEST.MF" mode="update">
+            <attribute name="Class-Path" value="${included.lib.file.reference.antlr-2.7.6rc1.jar} ${included.lib.file.reference.asm.jar} ${included.lib.file.reference.cglib-2.1.3.jar} ${included.lib.file.reference.commons-collections-2.1.1.jar} ${included.lib.file.reference.commons-logging-1.0.4.jar} ${included.lib.file.reference.concurrent-1.3.2.jar} ${included.lib.file.reference.dom4j-1.6.1.jar} ${included.lib.file.reference.ehcache-1.1.jar} ${included.lib.file.reference.hibernate3.jar} ${included.lib.file.reference.jdbc2_0-stdext.jar} ${included.lib.file.reference.jta.jar} ${included.lib.file.reference.log4j-1.2.11.jar} ${included.lib.file.reference.mysql-connector-java-3.1.13-bin.jar} ${included.lib.file.reference.spring-agent.jar} ${included.lib.file.reference.spring-aop.jar} ${included.lib.file.reference.spring-aspects.jar} ${included.lib.file.reference.spring-beans.jar} ${included.lib.file.reference.spring-context.jar} ${included.lib.file.reference.spring-core.jar} ${included.lib.file.reference.spring-dao.jar} ${included.lib.file.reference.spring-hibernate2.jar} ${included.lib.file.reference.spring-hibernate3.jar} ${included.lib.file.reference.spring-ibatis.jar} ${included.lib.file.reference.spring-jca.jar} ${included.lib.file.reference.spring-jdbc.jar} ${included.lib.file.reference.spring-jdo.jar} ${included.lib.file.reference.spring-jms.jar} ${included.lib.file.reference.spring-jmx.jar} ${included.lib.file.reference.spring-jpa.jar} ${included.lib.file.reference.spring-mock.jar} ${included.lib.file.reference.spring-portlet.jar} ${included.lib.file.reference.spring-remoting.jar} ${included.lib.file.reference.spring-struts.jar} ${included.lib.file.reference.spring-support.jar} ${included.lib.file.reference.spring-tomcat-weaver.jar} ${included.lib.file.reference.spring-toplink.jar} ${included.lib.file.reference.spring-web.jar} ${included.lib.file.reference.spring-webmvc.jar} ${included.lib.file.reference.spring.jar} "/>
+        </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
     <target name="library-inclusion-in-archive" depends="init" unless="dist.ear.dir">
+        <copy file="${file.reference.antlr-2.7.6rc1.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.asm.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.cglib-2.1.3.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.commons-collections-2.1.1.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.commons-logging-1.0.4.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.concurrent-1.3.2.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.dom4j-1.6.1.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.ehcache-1.1.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.hibernate3.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.jdbc2_0-stdext.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.jta.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.log4j-1.2.11.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.mysql-connector-java-3.1.13-bin.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-agent.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-aop.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-aspects.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-beans.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-context.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-core.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-dao.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-hibernate2.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-hibernate3.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-ibatis.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-jca.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-jdbc.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-jdo.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-jms.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-jmx.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-jpa.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-mock.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-portlet.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-remoting.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-struts.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-support.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-tomcat-weaver.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-toplink.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-web.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring-webmvc.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.spring.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <copy file="${libs.jsf-runtime.classpath.libfile.6}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <copy file="${libs.jsf-runtime.classpath.libfile.5}" todir="${build.web.dir.real}/WEB-INF/lib"/>
         <copy file="${libs.jsf-runtime.classpath.libfile.4}" todir="${build.web.dir.real}/WEB-INF/lib"/>
