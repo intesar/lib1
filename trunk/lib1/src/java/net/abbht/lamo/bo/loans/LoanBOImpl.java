@@ -53,7 +53,7 @@ public class LoanBOImpl implements LoanBO {
         long dueTime = time +  oneDay * allowedDays;*/
 
         //creating loan object and populating it
-        Long time = new java.util.Date().getTime();
+        long time = new java.util.Date().getTime();
         Date todayDate = new Date(time);
         Loan loan = new Loan();
         loan.setDuedate(new Date(validateRenew.getDueDays()));
