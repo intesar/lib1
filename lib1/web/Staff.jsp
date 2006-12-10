@@ -10,7 +10,7 @@
                 <ui:body binding="#{Staff.body1}" id="body1" style="-rave-layout: grid">
                     <ui:form binding="#{Staff.form1}" id="form1">
                         <ui:label binding="#{Staff.label72}" id="label72" style="left: 336px; top: 360px; position: absolute" text="Label"/>
-                        <ui:tabSet binding="#{Staff.tabSet1}" id="tabSet1" lite="true" mini="true" selected="users" style="height: 526px; left: 168px; top: 0px; position: absolute; width: 910px; z-index: 500">
+                        <ui:tabSet binding="#{Staff.tabSet1}" id="tabSet1" lite="true" mini="true" selected="userGroups" style="height: 526px; left: 96px; top: 0px; position: absolute; width: 886px; z-index: 500">
                             <ui:tab action="#{Staff.itemGroups_action}" binding="#{Staff.itemGroups}" id="itemGroups" text="Item Group">
                                 <ui:panelLayout binding="#{Staff.layoutPanel13}" id="layoutPanel13" style="height: 526px; position: relative; width: 877px; -rave-layout: grid">
                                     <ui:label binding="#{Staff.label77}" id="label77" style="left: 24px; top: 96px; position: absolute" text="Group Name"/>
@@ -22,9 +22,9 @@
                                     <ui:textField binding="#{Staff.textField47}" id="textField47" style="left: 120px; top: 96px; position: absolute; width: 120px"/>
                                     <ui:textField binding="#{Staff.textField48}" id="textField48" style="left: 120px; top: 144px; position: absolute; width: 120px"/>
                                     <ui:textField binding="#{Staff.textField49}" id="textField49" style="left: 120px; top: 192px; position: absolute; width: 120px"/>
-                                    <ui:dropDown binding="#{Staff.dropDown11}" id="dropDown11" items="#{Staff.dropDown11DefaultOptions.options}" style="left: 48px; top: 24px; position: absolute"/>
+                                    <ui:dropDown binding="#{Staff.dropDown11}" id="dropDown11" items="#{Staff.dropDown11DefaultOptions.options}" style="left: 24px; top: 24px; position: absolute; width: 72px"/>
                                     <ui:listbox binding="#{Staff.listbox8}" id="listbox8" items="#{Staff.listbox8DefaultOptions.options}" style="left: 288px; top: 72px; position: absolute; width: 144px"/>
-                                    <ui:button binding="#{Staff.button56}" id="button56" style="left: 311px; top: 24px; position: absolute; width: 82px" text="Search"/>
+                                    <ui:button binding="#{Staff.button56}" id="button56" style="left: 263px; top: 24px; position: absolute; width: 82px" text="Search"/>
                                 </ui:panelLayout>
                             </ui:tab>
                             <ui:tab action="#{Staff.users_action}" binding="#{Staff.users}" id="users" text="Users">
@@ -149,7 +149,7 @@
                             </ui:tab>
                             <ui:tab binding="#{Staff.userGroups}" id="userGroups" text="User Goups">
                                 <ui:panelLayout binding="#{Staff.layoutPanel12}" id="layoutPanel12" style="height: 468px; width: 851px">
-                                    <ui:label binding="#{Staff.label71}" id="label71" style="left: 72px; top: 48px; position: absolute" text="Group Name"/>
+                                    <ui:label binding="#{Staff.label71}" id="label71" style="left: 24px; top: 48px; position: absolute" text="Group Name"/>
                                     <ui:textField binding="#{Staff.textField41}" id="textField41" style="left: 120px; top: 96px; position: absolute; width: 120px"/>
                                     <ui:label binding="#{Staff.label73}" id="label73" style="left: 0px; top: 192px; position: absolute" text="Max Items Allowed"/>
                                     <ui:label binding="#{Staff.label74}" id="label74" style="left: 24px; top: 240px; position: absolute" text="Last Updated"/>
@@ -157,14 +157,14 @@
                                     <ui:textField binding="#{Staff.textField42}" id="textField42" style="left: 120px; top: 144px; position: absolute; width: 120px"/>
                                     <ui:textField binding="#{Staff.textField43}" id="textField43" style="left: 120px; top: 192px; position: absolute; width: 120px"/>
                                     <ui:textField binding="#{Staff.textField44}" id="textField44" style="left: 120px; top: 240px; position: absolute; width: 120px"/>
-                                    <ui:textField binding="#{Staff.textField45}" id="textField45" style="left: 168px; top: 48px; position: absolute; width: 120px"/>
+                                    <ui:textField binding="#{Staff.textField45}" id="textField45" style="left: 120px; top: 48px; position: absolute; width: 120px"/>
                                     <ui:label binding="#{Staff.label76}" id="label76" style="left: 24px; top: 96px; position: absolute" text="Group Name"/>
                                     <ui:listbox binding="#{Staff.listbox7}" id="listbox7" items="#{Staff.listbox7DefaultOptions.options}" style="position: absolute; left: 432px; top: 96px; width: 144px; height: 144px"/>
                                     <ui:button binding="#{Staff.button51}" id="button51" style="left: 480px; top: 48px; position: absolute; width: 71px" text="Home"/>
                                     <ui:button binding="#{Staff.button52}" id="button52" style="left: 455px; top: 432px; position: absolute; width: 72px" text="Save"/>
                                     <ui:button binding="#{Staff.button53}" id="button53" style="left: 311px; top: 432px; position: absolute; width: 72px" text="Update"/>
                                     <ui:button binding="#{Staff.button54}" id="button54" style="left: 167px; top: 432px; position: absolute; width: 72px" text="Clear All"/>
-                                    <ui:button binding="#{Staff.button55}" id="button55" style="left: 311px; top: 48px; position: absolute; width: 72px" text="Search"/>
+                                    <ui:button binding="#{Staff.button55}" id="button55" style="left: 263px; top: 48px; position: absolute; width: 72px" text="Search"/>
                                 </ui:panelLayout>
                             </ui:tab>
                             <ui:tab binding="#{Staff.loans}" id="loans" text="Loans">
