@@ -10,7 +10,7 @@
                 <ui:body binding="#{Staff.body1}" id="body1" style="-rave-layout: grid">
                     <ui:form binding="#{Staff.form1}" id="form1">
                         <ui:label binding="#{Staff.label72}" id="label72" style="left: 336px; top: 360px; position: absolute" text="Label"/>
-                        <ui:tabSet binding="#{Staff.tabSet1}" id="tabSet1" lite="true" mini="true" selected="userGroups" style="height: 526px; left: 96px; top: 0px; position: absolute; width: 886px; z-index: 500">
+                        <ui:tabSet binding="#{Staff.tabSet1}" id="tabSet1" lite="true" mini="true" selected="userGroups" style="height: 526px; left: 96px; top: 0px; position: absolute; width: 838px; z-index: 500">
                             <ui:tab action="#{Staff.itemGroups_action}" binding="#{Staff.itemGroups}" id="itemGroups" text="Item Group">
                                 <ui:panelLayout binding="#{Staff.layoutPanel13}" id="layoutPanel13" style="height: 526px; position: relative; width: 877px; -rave-layout: grid">
                                     <ui:label binding="#{Staff.label77}" id="label77" style="left: 24px; top: 96px; position: absolute" text="Group Name"/>
@@ -148,7 +148,7 @@
                                 </ui:panelLayout>
                             </ui:tab>
                             <ui:tab binding="#{Staff.userGroups}" id="userGroups" text="User Goups">
-                                <ui:panelLayout binding="#{Staff.layoutPanel12}" id="layoutPanel12" style="height: 468px; width: 851px">
+                                <ui:panelLayout binding="#{Staff.layoutPanel12}" id="layoutPanel12" style="height: 468px; position: relative; width: 829px; -rave-layout: grid">
                                     <ui:label binding="#{Staff.label71}" id="label71" style="left: 24px; top: 48px; position: absolute" text="Group Name"/>
                                     <ui:textField binding="#{Staff.textField41}" id="textField41" style="left: 120px; top: 96px; position: absolute; width: 120px"/>
                                     <ui:label binding="#{Staff.label73}" id="label73" style="left: 0px; top: 192px; position: absolute" text="Max Items Allowed"/>
