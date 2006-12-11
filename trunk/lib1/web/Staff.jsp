@@ -9,22 +9,27 @@
                 </ui:head>
                 <ui:body binding="#{Staff.body1}" id="body1" style="-rave-layout: grid">
                     <ui:form binding="#{Staff.form1}" id="form1">
-                        <ui:label binding="#{Staff.label72}" id="label72" style="left: 336px; top: 360px; position: absolute" text="Label"/>
-                        <ui:tabSet binding="#{Staff.tabSet1}" id="tabSet1" lite="true" mini="true" selected="userGroups" style="height: 526px; left: 96px; top: 0px; position: absolute; width: 838px; z-index: 500">
+                        <ui:tabSet binding="#{Staff.tabSet1}" id="tabSet1" lite="true" mini="true" selected="itemGroups" style="height: 526px; left: 96px; top: 0px; position: absolute; width: 838px; z-index: 500">
                             <ui:tab action="#{Staff.itemGroups_action}" binding="#{Staff.itemGroups}" id="itemGroups" text="Item Group">
                                 <ui:panelLayout binding="#{Staff.layoutPanel13}" id="layoutPanel13" style="height: 526px; position: relative; width: 877px; -rave-layout: grid">
                                     <ui:label binding="#{Staff.label77}" id="label77" style="left: 24px; top: 96px; position: absolute" text="Group Name"/>
                                     <ui:label binding="#{Staff.label78}" id="label78" style="left: 24px; top: 144px; position: absolute" text="Description"/>
                                     <ui:label binding="#{Staff.label79}" id="label79" style="left: 24px; top: 192px; position: absolute" text="Issue Days"/>
-                                    <ui:textField binding="#{Staff.textField50}" id="textField50" style="left: 120px; top: 240px; position: absolute; width: 120px"/>
+                                    <ui:textField binding="#{Staff._possibleRenews}" converter="#{Staff.integerConverter2}" id="_possibleRenews" style="left: 120px; top: 240px; position: absolute; width: 120px"/>
                                     <ui:label binding="#{Staff.label80}" id="label80" style="left: 0px; top: 240px; position: absolute" text="Possible Renews"/>
                                     <ui:textField binding="#{Staff.textField46}" id="textField46" style="left: 120px; top: 24px; position: absolute; width: 120px"/>
-                                    <ui:textField binding="#{Staff.textField47}" id="textField47" style="left: 120px; top: 96px; position: absolute; width: 120px"/>
-                                    <ui:textField binding="#{Staff.textField48}" id="textField48" style="left: 120px; top: 144px; position: absolute; width: 120px"/>
-                                    <ui:textField binding="#{Staff.textField49}" id="textField49" style="left: 120px; top: 192px; position: absolute; width: 120px"/>
+                                    <ui:textField binding="#{Staff._groupName}" id="_groupName" style="left: 120px; top: 96px; position: absolute; width: 120px"/>
+                                    <ui:textField binding="#{Staff._description1}" id="_description1" style="left: 120px; top: 144px; position: absolute; width: 120px"/>
+                                    <ui:textField binding="#{Staff._issueDays}" converter="#{Staff.integerConverter1}" id="_issueDays" style="left: 120px; top: 192px; position: absolute; width: 120px"/>
                                     <ui:dropDown binding="#{Staff.dropDown11}" id="dropDown11" items="#{Staff.dropDown11DefaultOptions.options}" style="left: 24px; top: 24px; position: absolute; width: 72px"/>
-                                    <ui:listbox binding="#{Staff.listbox8}" id="listbox8" items="#{Staff.listbox8DefaultOptions.options}" style="left: 288px; top: 72px; position: absolute; width: 144px"/>
-                                    <ui:button binding="#{Staff.button56}" id="button56" style="left: 263px; top: 24px; position: absolute; width: 82px" text="Search"/>
+                                    <ui:listbox binding="#{Staff.listbox8}" id="listbox8" items="#{Staff.listbox8DefaultOptions.options}" style="height: 220px; left: 288px; top: 48px; position: absolute; width: 144px"/>
+                                    <ui:button action="#{Staff.button1_action}" binding="#{Staff.button1}" id="button1"
+                                        style="left: 215px; top: 312px; position: absolute; width: 71px" text="Submit"/>
+                                    <ui:button action="#{Staff.button2_action}" binding="#{Staff.button2}" id="button2"
+                                        style="left: -1px; top: 312px; position: absolute; width: 86px" text="Refresh"/>
+                                    <ui:button binding="#{Staff.button4}" id="button4" style="left: 311px; top: 312px; position: absolute; width: 72px" text="Refresh"/>
+                                    <ui:button action="#{Staff.button9_action}" binding="#{Staff.button9}" id="button9"
+                                        style="left: 95px; top: 312px; position: absolute; width: 96px" text="Update"/>
                                 </ui:panelLayout>
                             </ui:tab>
                             <ui:tab action="#{Staff.users_action}" binding="#{Staff.users}" id="users" text="Users">
