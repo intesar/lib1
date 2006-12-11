@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="net.abbht.lamo.persistence.users.Address"
+        table="ADDRESS"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="long"
+        >
+            <generator class="increment">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Address.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="city"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="city"
+        />
+
+        <property
+            name="state"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="state"
+        />
+
+        <property
+            name="street"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="street"
+        />
+
+        <property
+            name="zipcode"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="zipcode"
+        />
+
+        <property
+            name="country"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="country"
+        />
+
+        <property
+            name="username"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="username"
+        />
+
+        <property
+            name="type"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="type"
+        />
+
+        <property
+            name="enable"
+            type="int"
+            update="true"
+            insert="true"
+            column="enable"
+        />
+
+        <property
+            name="updationDate"
+            type="java.sql.Date"
+            update="true"
+            insert="true"
+            column="updationDate"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Address.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>
