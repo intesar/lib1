@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="net.abbht.lamo.persistence.users.UserGroup"
+        table="USER_GROUP"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+        >
+            <generator class="increment">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-UserGroup.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="groupname"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="groupname"
+        />
+
+        <property
+            name="groupdesc"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="groupdesc"
+        />
+
+        <property
+            name="maxnoofbooks"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            column="maxnoofbooks"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-UserGroup.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>
