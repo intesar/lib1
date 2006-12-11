@@ -18,20 +18,30 @@ import org.springframework.core.io.Resource;
  * @author home
  */
 public class SpringFactory {
-    static {
+  static {
             
         Resource res = new FileSystemResource("SpringBeansFile.xml");
         factory = new XmlBeanFactory(res);
 
     }
+   
     private static BeanFactory factory;
+    private static SpringFactory sf = new SpringFactory();
     //private static final SpringFactory instance = new SpringFactory();
     /** Creates a new instance of SpringFactory */
     private SpringFactory() {
-
+        Resource res = new FileSystemResource("SpringBeansFile.xml");
+        factory = new XmlBeanFactory(res);
     }
-    
+    public static SpringFactory getInstance() {
+        if ( sf == null )
+            sf = new SpringFactory();
+        return sf;
+    }
     public static BeanFactory instance() {
+        return factory;
+    }
+    public BeanFactory getBeanFactory () {
         return factory;
     }
 }

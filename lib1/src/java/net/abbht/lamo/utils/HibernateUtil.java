@@ -40,6 +40,7 @@ public class HibernateUtil {
         } catch (Exception ex) {
             log.error("Initial SessionFactory creation failed.", ex);
             ex.printStackTrace();
+            System.out.println(ex.toString());
             throw new ExceptionInInitializerError(ex);
         }
         return  sessionFactory;

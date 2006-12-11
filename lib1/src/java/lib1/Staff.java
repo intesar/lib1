@@ -31,8 +31,11 @@ import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.IntegerConverter;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.validator.ValidatorException;
+import net.abbht.lamo.bo.items.ItemBOFactory;
+import net.abbht.lamo.persistence.items.ItemGroup;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -2464,16 +2467,6 @@ public class Staff extends AbstractPageBean {
         this.layoutPanel13 = pl;
     }
 
-    private Label label72 = new Label();
-
-    public Label getLabel72() {
-        return label72;
-    }
-
-    public void setLabel72(Label l) {
-        this.label72 = l;
-    }
-
     private Label label77 = new Label();
 
     public Label getLabel77() {
@@ -2524,44 +2517,44 @@ public class Staff extends AbstractPageBean {
         this.textField46 = tf;
     }
 
-    private TextField textField47 = new TextField();
+    private TextField _groupName = new TextField();
 
-    public TextField getTextField47() {
-        return textField47;
+    public TextField get_groupName() {
+        return _groupName;
     }
 
-    public void setTextField47(TextField tf) {
-        this.textField47 = tf;
+    public void set_groupName(TextField tf) {
+        this._groupName = tf;
     }
 
-    private TextField textField48 = new TextField();
+    private TextField _description1 = new TextField();
 
-    public TextField getTextField48() {
-        return textField48;
+    public TextField get_description1() {
+        return _description1;
     }
 
-    public void setTextField48(TextField tf) {
-        this.textField48 = tf;
+    public void set_description1(TextField tf) {
+        this._description1 = tf;
     }
 
-    private TextField textField49 = new TextField();
+    private TextField _issueDays = new TextField();
 
-    public TextField getTextField49() {
-        return textField49;
+    public TextField get_issueDays() {
+        return _issueDays;
     }
 
-    public void setTextField49(TextField tf) {
-        this.textField49 = tf;
+    public void set_issueDays(TextField tf) {
+        this._issueDays = tf;
     }
 
-    private TextField textField50 = new TextField();
+    private TextField _possibleRenews = new TextField();
 
-    public TextField getTextField50() {
-        return textField50;
+    public TextField get_possibleRenews() {
+        return _possibleRenews;
     }
 
-    public void setTextField50(TextField tf) {
-        this.textField50 = tf;
+    public void set_possibleRenews(TextField tf) {
+        this._possibleRenews = tf;
     }
 
     private DropDown dropDown11 = new DropDown();
@@ -2604,14 +2597,64 @@ public class Staff extends AbstractPageBean {
         this.listbox8DefaultOptions = dol;
     }
 
-    private Button button56 = new Button();
+    private Button button1 = new Button();
 
-    public Button getButton56() {
-        return button56;
+    public Button getButton1() {
+        return button1;
     }
 
-    public void setButton56(Button b) {
-        this.button56 = b;
+    public void setButton1(Button b) {
+        this.button1 = b;
+    }
+
+    private Button button2 = new Button();
+
+    public Button getButton2() {
+        return button2;
+    }
+
+    public void setButton2(Button b) {
+        this.button2 = b;
+    }
+
+    private Button button4 = new Button();
+
+    public Button getButton4() {
+        return button4;
+    }
+
+    public void setButton4(Button b) {
+        this.button4 = b;
+    }
+
+    private Button button9 = new Button();
+
+    public Button getButton9() {
+        return button9;
+    }
+
+    public void setButton9(Button b) {
+        this.button9 = b;
+    }
+
+    private IntegerConverter integerConverter1 = new IntegerConverter();
+
+    public IntegerConverter getIntegerConverter1() {
+        return integerConverter1;
+    }
+
+    public void setIntegerConverter1(IntegerConverter ic) {
+        this.integerConverter1 = ic;
+    }
+
+    private IntegerConverter integerConverter2 = new IntegerConverter();
+
+    public IntegerConverter getIntegerConverter2() {
+        return integerConverter2;
+    }
+
+    public void setIntegerConverter2(IntegerConverter ic) {
+        this.integerConverter2 = ic;
     }
     
     // </editor-fold>
@@ -2763,8 +2806,74 @@ public class Staff extends AbstractPageBean {
     }
 
     public String itemGroups_action() {
+        ItemGroup ig = getItemGroupObject();
+        try {
+            ItemBOFactory.newInstance().addItemGroup(ig);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }        
+        return null;
+    }
+
+    private ItemGroup getItemGroupObject() {
         // TODO: Replace with your code
+        String gn = (String) this._groupName.getText();
+        String d1 = (String) this._description1.getText();
+        Integer days = (Integer) this._possibleRenews.getText();
+        Integer renews = (Integer) this._issueDays.getText();
+        //this._issueDays.setText(days);
+        ItemGroup ig = new ItemGroup();
+        ig.setDescription(d1);
+        ig.setGroupname(gn);
+        ig.setNoofdays(days.intValue());
+        ig.setPossibleRenews(renews.intValue());
+        return ig;
+    }
+
+    public String button2_action() {
+        // TODO: Process the button click action. Return value is a navigation
+        // case name where null will return to the same page.
+        fillItemGroupForm(new ItemGroup());
+        return null;
+    }
+    
+    private void fillItemGroupForm(ItemGroup ig) {
+        _groupName.setText(ig.getGroupname());
+        _description1.setText(ig.getDescription());
+        _possibleRenews.setText(new Integer(ig.getPossibleRenews()));
+        _issueDays.setText(new Integer(ig.getNoofdays()));
         
+    }
+
+    public String button9_action() {
+        // TODO: Process the button click action. Return value is a navigation
+        // case name where null will return to the same page.
+        ItemGroup ig = getItemGroupObject();
+        try {
+            ItemGroup igs = ItemBOFactory.newInstance().findItemGroup(ig.getGroupname());
+            ItemBOFactory.newInstance().addItemGroup(igs);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }               
+        return null;
+    }
+
+    public String button1_action() {
+        // TODO: Process the button click action. Return value is a navigation
+        // case name where null will return to the same page.
+        
+        ItemGroup ig = getItemGroupObject();
+        System.out.println("Button ");
+        ig.setDescription("ldjf");
+        System.out.println("Button hello");
+        
+       //this.fillItemGroupForm(ig);
+        try {
+            //ItemGroup igs = ItemBOFactory.newInstance().findItemGroup(ig.getGroupname());
+            //ItemBOFactory.newInstance().addItemGroup(ig);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }               
         return null;
     }
 }
