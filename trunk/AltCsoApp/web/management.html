@@ -18,64 +18,7 @@
             @import "./css/demo_table.css";
         </style>
         <link rel="Stylesheet" href="css/toolStyle.css" />
-        <script type="text/javascript" language="javascript" src="./js/jquery-1.5.2.min.js"></script>
-        <script type="text/javascript" language="javascript" src="./js/jquery.dataTables.js"></script>
-        <script type="text/JavaScript" language="javascript" src="./js/tool.js"></script>
-        <script type="text/javascript" language="javascript" src="./js/jquery-ui-1.8.13.custom.min.js"></script>
-        <!-- script src="./js/jquery-ui-1.8.13.custom.min.js"></script -->
-        <!-- script type="text/javascript" language="javascript" src="data.js"></script -->
-        <script type="text/javascript" charset="utf-8">
-            var oTable;
-            /* Global var for counter */
-            var giCount = 2;
 
-            
-
-            function fnClickAddRow() {
-                var arr = new Array();
-                for ( var i = 0; i < 100; i++) {
-                    arr[i] = [
-                        giCount+".1",
-                        giCount+".2",
-                        giCount+".3",
-                        giCount+".4" ]
-                }
-                
-                oTable.fnAddData( arr );
-	
-                giCount++;
-            }
-            $(document).ready(function() {
-	
-                $('#requestDataTable').dataTable( {	
-                    "bFilter": false,
-                    "sScrollY": "260px",
-                    "aLengthMenu": [10, 20, 40],
-                    "iDisplayLength": 10
-                } );	
-	
-                oTable = $('#queueInfoDataTable').dataTable( {		
-                    "bFilter": false,
-                    "sScrollY": "410px",
-                    "aLengthMenu": [25, 50, 100],
-                    "iDisplayLength": 25
-                } );
-                $("#refreshOTable").click(function() {
-                    oTable.fnClearTable();
-                    //for ( var x = 0; x < 100; x++)
-                        fnClickAddRow();
-                })
-                $( ".datepicker" ).datepicker({
-                    showOn: "button",	
-                    buttonImage: "images/calendar.gif",			
-                    buttonImageOnly: true
-                });
-                $("#help").click(function() {
-                    $("#dialog").dialog();
-                });
-	
-            });
-        </script>
     </head>
     <body>
         <header>
@@ -676,69 +619,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                    <tr><td style="width:100px;">	1201	</td><td style="width:192px;">WebEx</td><td style="width:62px;">1MB</td><td style="width:122px;">4/20/2011 0:13</td></tr>
-                                    <tr><td>	1202	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1203	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1204	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1205	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1206	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1207	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1208	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1209	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1210	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1211	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1212	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1213	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1214	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1215	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1216	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1217	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1218	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1219	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1220	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1221	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1222	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1223	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1224	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1225	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1226	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1227	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1228	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1229	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1230	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1231	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1232	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1233	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1234	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1235	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1236	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1237	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1238	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1239	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1240	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1241	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1242	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1243	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1244	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1245	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1246	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1247	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1248	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1249	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1250	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1251	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1252	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1253	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1254	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1255	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1256	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1257	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1258	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1259	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-                                    <tr><td>	1260	</td><td>WebEx</td><td>1MB</td><td>4/20/2011 0:13</td></tr>
-
-
                                 </tbody>
                             </table>
                             <!-- /hidden data ========================== --> 
@@ -798,4 +678,55 @@
 
 
 </body>
+
+<script type="text/javascript" language="javascript" src="./js/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="./js/jquery.dataTables.js"></script>
+<script type="text/JavaScript" language="javascript" src="./js/tool.js"></script>
+<script type="text/javascript" language="javascript" src="./js/jquery-ui-1.8.13.custom.min.js"></script>
+<script type='text/javascript' src='/AltCsoApp/dwr/interface/AltCsoAjax.js'></script>
+<script type='text/javascript' src='/AltCsoApp/dwr/engine.js'></script>
+<!-- script src="./js/jquery-ui-1.8.13.custom.min.js"></script -->
+<!-- script type="text/javascript" language="javascript" src="data.js"></script -->
+<script type="text/javascript" charset="utf-8">
+    var oTable;
+    /* Global var for counter */
+    function displayTab5(){
+        AltCsoAjax.getActiveTranslationStatuses(function(data){
+            var arr = new Array();
+            $.each(data, function(index, value) { 
+                arr[index] = [value.requestId, value.customerId.groupName, value.sourceLength+"MB", value.formatedStartTime]
+            })
+            oTable.fnClearTable();
+            oTable.fnAddData( arr );
+        })
+    }
+    $(document).ready(function() {
+        $('#requestDataTable').dataTable( {	
+            "bFilter": false,
+            "sScrollY": "260px",
+            "aLengthMenu": [10, 20, 40],
+            "iDisplayLength": 10
+        } );	
+	
+        oTable = $('#queueInfoDataTable').dataTable( {		
+            "bFilter": false,
+            "sScrollY": "410px",
+            "aLengthMenu": [25, 50, 100],
+            "iDisplayLength": 25
+        } );
+        $("#refreshOTable").click(function() {
+            displayTab5();
+        })
+        $( ".datepicker" ).datepicker({
+            showOn: "button",	
+            buttonImage: "images/calendar.gif",			
+            buttonImageOnly: true
+        });
+        $("#help").click(function() {
+            $("#dialog").dialog();
+        });
+        displayTab5();
+	
+    });
+</script>
 </html>
