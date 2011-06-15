@@ -25,6 +25,26 @@
         <!-- script src="./js/jquery-ui-1.8.13.custom.min.js"></script -->
         <!-- script type="text/javascript" language="javascript" src="data.js"></script -->
         <script type="text/javascript" charset="utf-8">
+            var oTable;
+            /* Global var for counter */
+            var giCount = 2;
+
+            
+
+            function fnClickAddRow() {
+                var arr = new Array();
+                for ( var i = 0; i < 100; i++) {
+                    arr[i] = [
+                        giCount+".1",
+                        giCount+".2",
+                        giCount+".3",
+                        giCount+".4" ]
+                }
+                
+                oTable.fnAddData( arr );
+	
+                giCount++;
+            }
             $(document).ready(function() {
 	
                 $('#requestDataTable').dataTable( {	
@@ -34,13 +54,17 @@
                     "iDisplayLength": 10
                 } );	
 	
-                $('#queueInfoDataTable').dataTable( {		
+                oTable = $('#queueInfoDataTable').dataTable( {		
                     "bFilter": false,
                     "sScrollY": "410px",
                     "aLengthMenu": [25, 50, 100],
                     "iDisplayLength": 25
                 } );
-	
+                $("#refreshOTable").click(function() {
+                    oTable.fnClearTable();
+                    //for ( var x = 0; x < 100; x++)
+                        fnClickAddRow();
+                })
                 $( ".datepicker" ).datepicker({
                     showOn: "button",	
                     buttonImage: "images/calendar.gif",			
@@ -636,7 +660,7 @@
                     <div class="pl-00">
                         <div class="sectionTitle" style="width:25%;">Current jobs in queue&nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <button>Refresh</button>
+                            <button id="refreshOTable">Refresh</button>
                         </div>
                     </div>
                     <div class="pl-00" style="height:auto;margin-top:5px;">
