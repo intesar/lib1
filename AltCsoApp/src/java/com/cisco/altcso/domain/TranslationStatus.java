@@ -1,16 +1,21 @@
 package com.cisco.altcso.domain;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -21,9 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "TRANSLATION_STATUS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TranslationStatus.findByStartTimeAndEndTimeAndCustomerId", 
-        query = "SELECT t FROM TranslationStatus t WHERE t.startTime >= :startTime AND t.endTime <= :endTime AND t.customerId = : customerId"),
-    @NamedQuery(name = "TranslationStatus.findAll", query = "SELECT t FROM TranslationStatus t"),
+     @NamedQuery(name = "TranslationStatus.findAll", query = "SELECT t FROM TranslationStatus t"),
     @NamedQuery(name = "TranslationStatus.findByRequestId", query = "SELECT t FROM TranslationStatus t WHERE t.requestId = :requestId"),
     @NamedQuery(name = "TranslationStatus.findByStatus", query = "SELECT t FROM TranslationStatus t WHERE t.status = :status"),
     @NamedQuery(name = "TranslationStatus.findByStartTime", query = "SELECT t FROM TranslationStatus t WHERE t.startTime = :startTime"),
@@ -55,8 +58,7 @@ public class TranslationStatus implements Serializable {
     @Column(name = "END_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
-    @Column(name = "CUSTOMER_ID")
-    private Long customerId;
+    
     @Column(name = "SOURCE_WORD_COUNT")
     private Long sourceWordCount;
     @Column(name = "SOURCE_LANGUAGE_ID")
@@ -80,6 +82,10 @@ public class TranslationStatus implements Serializable {
     @Column(name = "TRANSLATED_LENGTH")
     private Long translatedLength;
 
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
+    @ManyToOne(optional = false)
+    private Customer customerId;
+    
     public TranslationStatus() {
     }
 
@@ -119,11 +125,11 @@ public class TranslationStatus implements Serializable {
         this.endTime = endTime;
     }
 
-    public Long getCustomerId() {
+    public Customer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(Customer customerId) {
         this.customerId = customerId;
     }
 
@@ -215,6 +221,11 @@ public class TranslationStatus implements Serializable {
         this.translatedLength = translatedLength;
     }
 
+    @Transient
+    public String getFormatedStartTime() {
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        return df.format(startTime);
+    }
     @Override
     public int hashCode() {
         int hash = 0;

@@ -17,7 +17,7 @@
     </bean>
     
     <dwr:configuration>
-        <dwr:convert type="bean" class="com.cisco.altcso.domain.*" />
-        <dwr:convert type="bean"  class="java.util.*"  />
+        <dwr:convert type="hibernate3" class="com.cisco.altcso.domain.*" />
+        <dwr:convert type="collection"  class="java.util.Collection"  />
     </dwr:configuration>
 </beans>
