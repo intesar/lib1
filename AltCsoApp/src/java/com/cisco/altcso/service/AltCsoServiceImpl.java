@@ -50,4 +50,11 @@ public class AltCsoServiceImpl implements AltCsoService {
     public List<TranslationStatus> getTranslationStatusesBetween(Date start, Date end, Long customerId) {
         return this.translationStatusDao.findByCustomerIdBetweenDates(customerId, start, end);
     }
+
+    @Override
+    public List<Customer> getAllCutomers() {
+        return this.customerDao.findAll();
+    }
+    
+    
 }

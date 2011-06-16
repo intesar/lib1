@@ -14,6 +14,7 @@
             <dwr:include method="getCustomerByName" />
             <dwr:include method="saveCustomer" />
             <dwr:include method="deleteCustomer" />
+            <dwr:include method="getAllCutomers" />
         </dwr:remote>
     </bean>
     

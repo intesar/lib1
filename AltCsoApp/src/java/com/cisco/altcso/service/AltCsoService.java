@@ -16,7 +16,7 @@ public interface AltCsoService {
     /**
      *  
      */
-    public List<TranslationStatus> getActiveTranslationStatuses();
+    List<TranslationStatus> getActiveTranslationStatuses();
     
     //
     //  tab-1
@@ -26,15 +26,17 @@ public interface AltCsoService {
      * @param keyword
      * @return 
      */
-    public List<Customer> getCustomerByName(String keyword);
+    List<Customer> getCustomerByName(String keyword);
     
-    public void saveCustomer(Customer customer);
+    void saveCustomer(Customer customer);
     
-    public void deleteCustomer(Long customerId);
+    void deleteCustomer(Long customerId);
     
     //
     // tab-4
     //
     
-    public List<TranslationStatus> getTranslationStatusesBetween(Date start, Date end, Long customerId );
+    List<TranslationStatus> getTranslationStatusesBetween(Date start, Date end, Long customerId );
+    
+    List<Customer> getAllCutomers();
 }
