@@ -50,4 +50,8 @@ public class AltCsoAjax {
         }
         return null;
     }
+    
+    public List<Customer> getAllCutomers() {
+        return this.altCsoService.getAllCutomers();
+    }
 }
