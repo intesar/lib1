@@ -11,5 +11,5 @@ public interface TranslationStatusDao extends GenericDao<TranslationStatus, Long
     
     public List<TranslationStatus> findByStatus(String status);
     
-    public List<TranslationStatus> findByStartTimeAndEndTimeAndCustomerId(Date start, Date end, Long customerId);
+    public List<TranslationStatus> findByCustomerIdBetweenDates(Long customerId, Date start, Date end);
 }

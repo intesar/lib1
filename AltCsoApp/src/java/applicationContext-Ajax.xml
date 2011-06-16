@@ -10,6 +10,7 @@
     <bean id="altCsoAjax" class="com.cisco.altcso.service.AltCsoAjax" >
         <dwr:remote javascript="AltCsoAjax">
             <dwr:include method="getActiveTranslationStatuses" />
+            <dwr:include method="getTranslationStatusesBetween" />
             <dwr:include method="getCustomerByName" />
             <dwr:include method="saveCustomer" />
             <dwr:include method="deleteCustomer" />

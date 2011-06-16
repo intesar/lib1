@@ -26,7 +26,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "TRANSLATION_STATUS")
 @XmlRootElement
 @NamedQueries({
-     @NamedQuery(name = "TranslationStatus.findAll", query = "SELECT t FROM TranslationStatus t"),
+    @NamedQuery(name = "TranslationStatus.findByCustomerIdBetweenDates", query = "SELECT t FROM TranslationStatus t "
+        + "WHERE t.customerId.customerId = :customerId AND startTime >= :startTime AND endTime <= :endDate"),
+    @NamedQuery(name = "TranslationStatus.findAll", query = "SELECT t FROM TranslationStatus t"),
     @NamedQuery(name = "TranslationStatus.findByRequestId", query = "SELECT t FROM TranslationStatus t WHERE t.requestId = :requestId"),
     @NamedQuery(name = "TranslationStatus.findByStatus", query = "SELECT t FROM TranslationStatus t WHERE t.status = :status"),
     @NamedQuery(name = "TranslationStatus.findByStartTime", query = "SELECT t FROM TranslationStatus t WHERE t.startTime = :startTime"),
@@ -44,6 +46,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TranslationStatus.findBySourceLength", query = "SELECT t FROM TranslationStatus t WHERE t.sourceLength = :sourceLength"),
     @NamedQuery(name = "TranslationStatus.findByTranslatedLength", query = "SELECT t FROM TranslationStatus t WHERE t.translatedLength = :translatedLength")})
 public class TranslationStatus implements Serializable {
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -58,7 +61,6 @@ public class TranslationStatus implements Serializable {
     @Column(name = "END_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
-    
     @Column(name = "SOURCE_WORD_COUNT")
     private Long sourceWordCount;
     @Column(name = "SOURCE_LANGUAGE_ID")
@@ -81,11 +83,10 @@ public class TranslationStatus implements Serializable {
     private Long sourceLength;
     @Column(name = "TRANSLATED_LENGTH")
     private Long translatedLength;
-
     @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
     @ManyToOne(optional = false)
     private Customer customerId;
-    
+
     public TranslationStatus() {
     }
 
@@ -226,6 +227,13 @@ public class TranslationStatus implements Serializable {
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
         return df.format(startTime);
     }
+
+    @Transient
+    public String getFormatedEndTime() {
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        return df.format(endTime);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -250,5 +258,4 @@ public class TranslationStatus implements Serializable {
     public String toString() {
         return "com.cisco.altcso.domain.TranslationStatus[ requestId=" + requestId + " ]";
     }
-    
 }

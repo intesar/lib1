@@ -48,6 +48,6 @@ public class AltCsoServiceImpl implements AltCsoService {
 
     @Override
     public List<TranslationStatus> getTranslationStatusesBetween(Date start, Date end, Long customerId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.translationStatusDao.findByCustomerIdBetweenDates(customerId, start, end);
     }
 }

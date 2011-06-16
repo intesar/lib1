@@ -24,8 +24,8 @@ public class TranslationStatusDaoImpl extends GenericDaoImpl<TranslationStatus, 
     }
 
     @Override
-    public List<TranslationStatus> findByStartTimeAndEndTimeAndCustomerId(Date start, Date end, Long customerId) {
-        return this.entityManager.createNamedQuery("TranslationStatus.findByStartTimeAndEndTimeAndCustomerId")
+    public List<TranslationStatus> findByCustomerIdBetweenDates(Long customerId, Date start, Date end) {
+        return this.entityManager.createNamedQuery("TranslationStatus.findByCustomerIdBetweenDates")
                 .setParameter("startTime", start)
                 .setParameter("endTime", end)
                 .setParameter("customerId", customerId)

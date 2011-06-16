@@ -21,12 +21,14 @@
 
     </head>
     <body>
-        <header>
+    
+    <header>
             <div class="logoimg"></div>
             <h1>ALT CSO Admin Console</h1>
             <div id="help"></div>
         </header>
-        <section id="main">
+    
+    <section id="main">
             <ul id="tab">
                 <li class="select">Manage CSO Customers</li>
                 <li>Manage CSO Profiles</li>
@@ -629,6 +631,7 @@
             <!-- /tab panel 5 ================================================================== -->
         </div>
     </section>
+    
     <footer>
         <div id="footerNav">
             <nav>
@@ -688,8 +691,21 @@
 <!-- script src="./js/jquery-ui-1.8.13.custom.min.js"></script -->
 <!-- script type="text/javascript" language="javascript" src="data.js"></script -->
 <script type="text/javascript" charset="utf-8">
+    var oTable4;
+    function displayTab4() {
+        var startTime = '';
+        var endTime = '';
+        var customerId = '';
+        AltCsoAjax.getTranslationStatusesBetween(startTime, endTime, customerId, function(data){
+            var arr = new Array();
+            $.each(data, function(index, value) { 
+                arr[index] = [value.ormatedStartTime, value.customerId.groupName, value.sourceLength+"KB", value.formatedEndTime, value.requestId]
+            })
+            oTable4.fnClearTable();
+            oTable4.fnAddData( arr );
+        })
+    }
     var oTable;
-    /* Global var for counter */
     function displayTab5(){
         AltCsoAjax.getActiveTranslationStatuses(function(data){
             var arr = new Array();
@@ -701,19 +717,19 @@
         })
     }
     $(document).ready(function() {
-        $('#requestDataTable').dataTable( {	
+        oTable4 = $('#requestDataTable').dataTable( {	
             "bFilter": false,
             "sScrollY": "260px",
             "aLengthMenu": [10, 20, 40],
             "iDisplayLength": 10
-        } );	
+        });	
 	
         oTable = $('#queueInfoDataTable').dataTable( {		
             "bFilter": false,
             "sScrollY": "410px",
             "aLengthMenu": [25, 50, 100],
             "iDisplayLength": 25
-        } );
+        });
         $("#refreshOTable").click(function() {
             displayTab5();
         })
