@@ -2,8 +2,10 @@ package com.cisco.altcso.service;
 
 import com.cisco.altcso.dao.CustomerDao;
 import com.cisco.altcso.dao.TranslationStatusDao;
+import com.cisco.altcso.dao.UsersDao;
 import com.cisco.altcso.domain.Customer;
 import com.cisco.altcso.domain.TranslationStatus;
+import com.cisco.altcso.domain.Users;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class AltCsoServiceImpl implements AltCsoService {
     protected TranslationStatusDao translationStatusDao;
     @Autowired
     protected CustomerDao customerDao;
+    @Autowired
+    protected UsersDao usersDao;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
@@ -54,6 +58,32 @@ public class AltCsoServiceImpl implements AltCsoService {
     @Override
     public List<Customer> getAllCutomers() {
         return this.customerDao.findAll();
+    }
+
+    @Override
+    public List<Users> getByUserIds(String userId) {
+        return this.usersDao.findByUserId(userId);
+    }
+
+    @Override
+    public void persistUsers(String userId, String firstName, String lastName) {
+        Users user = new Users();
+        user.setUserId(userId);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        
+        this.usersDao.persist(user);
+    }
+
+    @Override
+    public void mergeUsers(Users users) {
+        this.usersDao.merge(users);
+    }
+
+    @Override
+    public void deleteUsers(String userId) {
+        Users user = this.usersDao.find(userId);
+        this.usersDao.delete(user);
     }
     
     

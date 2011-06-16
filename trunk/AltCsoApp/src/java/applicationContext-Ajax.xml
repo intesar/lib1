@@ -15,6 +15,10 @@
             <dwr:include method="saveCustomer" />
             <dwr:include method="deleteCustomer" />
             <dwr:include method="getAllCutomers" />
+            <dwr:include method="getByUserIds" />
+            <dwr:include method="persistUsers" />
+            <dwr:include method="mergeUsers" />
+            <dwr:include method="deleteUsers" />
         </dwr:remote>
     </bean>
     
