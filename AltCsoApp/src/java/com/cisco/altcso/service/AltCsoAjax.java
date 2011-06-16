@@ -2,6 +2,7 @@ package com.cisco.altcso.service;
 
 import com.cisco.altcso.domain.Customer;
 import com.cisco.altcso.domain.TranslationStatus;
+import com.cisco.altcso.domain.Users;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,5 +54,19 @@ public class AltCsoAjax {
     
     public List<Customer> getAllCutomers() {
         return this.altCsoService.getAllCutomers();
+    }
+    
+    // tab-3
+    List<Users> getByUserIds(String userId) {
+        return this.altCsoService.getByUserIds(userId);
+    }
+    void persistUsers(String userId, String firstName, String lastName) {
+        this.altCsoService.persistUsers(userId, firstName, lastName);
+    }
+    void mergeUsers(Users users) {
+        this.altCsoService.mergeUsers(users);
+    }
+    void deleteUsers(String userId) {
+        this.altCsoService.deleteUsers(userId);
     }
 }
