@@ -224,14 +224,20 @@ public class TranslationStatus implements Serializable {
 
     @Transient
     public String getFormatedStartTime() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        return df.format(startTime);
+        return getFormatedDate(startTime);
     }
 
+    private String getFormatedDate(Date dt) {
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        if ( dt != null ) {
+        return df.format(dt);
+        } else {
+            return "";
+        }
+    }
     @Transient
     public String getFormatedEndTime() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        return df.format(endTime);
+        return getFormatedDate(endTime);
     }
     
     @Override

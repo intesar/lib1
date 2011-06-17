@@ -21,14 +21,14 @@
 
     </head>
     <body>
-    
-    <header>
+
+        <header>
             <div class="logoimg"></div>
             <h1>ALT CSO Admin Console</h1>
             <div id="help"></div>
         </header>
-    
-    <section id="main">
+
+        <section id="main">
             <ul id="tab">
                 <li class="select">Manage CSO Customers</li>
                 <li>Manage CSO Profiles</li>
@@ -418,50 +418,48 @@
                     <div class="pl-00" style="height:30px;">
                         <div class="sectionTitle" style="width:25%;">Search user&nbsp;&nbsp; </div>
                         <div class="pl-25 alignL">
-                            <input type="search" name="q" size="28" />
+                            <input type="search" name="q" id="user_q" size="28" />
                         </div>
                         <div class="pl-50 alignL">
-                            <button>Go</button>
+                            <button id="goUserBtn">Go</button>
                         </div>
                     </div>
                     <div class="pl-00" style="height:160px;">
-                        <div class="sectionTitle" style="width:25%;">Search results&nbsp;&nbsp;</div><div class="pl-25 alignL boxBorder" style="width:25%;height:100%; overflow-y:scroll" overflow-x;hidden;>
-                                                                                                          <div style="margin:3px;">
-                                <div class="clickable">Ambika Balakrishnan</div>
-                                <div class="clickable"><span style="color: #930;">Carla Camargo</span></div>
-                                <div class="clickable">Kenji Oka</div>
+                        <div class="sectionTitle" style="width:25%;">Search results&nbsp;&nbsp;</div>
+                        <div class="pl-25 alignL boxBorder" style="width:25%;height:100%; overflow-y:scroll" overflow-x;hidden;>
+                             <div style="margin:3px;" id="user_result">
                             </div>  
                         </div>
                     </div>
                     <div class="pl-00" style="margin-top:50px;">
                         <div class="sectionTitle" style="width:25%;">CEC ID&nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <input type="text" name="customerID" size="28" value="ccamargo" />
+                            <input type="text" name="customerID" id="user_Id" size="28" value="" />
                         </div>
                     </div>
                     <div class="pl-00">
                         <div class="sectionTitle" style="width:25%;">First name
                             &nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <input type="text" name="customerID" size="28" value="Carla"/>
+                            <input type="text" name="customerID" id="user_fn" size="28" value=""/>
                         </div>
                     </div>
                     <div class="pl-00">
                         <div class="sectionTitle" style="width:25%;">Last name
                             &nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <input type="text" name="customerID" size="28" value="Camargo"/>
+                            <input type="text" name="customerID" id="user_ln" size="28" value=""/>
                         </div>
                     </div>
                     <div class="pl-00" style="position:absolute;top:70%;">
                         <div class="pl-25 alignL" style="left:25%;">
-                            <button>Save</button>
+                            <button id="userSaveBtn">Save</button>
                         </div>
                         <div class="pl alignL" style="left:35%;">
-                            <button>Delete</button>
+                            <button id="userDeleteBtn">Delete</button>
                         </div>
                         <div class="pl alignL" style="left:45%;">
-                            <button>Cancel</button>
+                            <button id="userCancelBtn">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -631,7 +629,7 @@
             <!-- /tab panel 5 ================================================================== -->
         </div>
     </section>
-    
+
     <footer>
         <div id="footerNav">
             <nav>
@@ -742,7 +740,77 @@
             $("#dialog").dialog();
         });
         displayTab5();
-	
+        $("#userCancelBtn").click(function() {
+            putUserData("","","");
+            user = null;
+        })
+        $("#userSaveBtn").click(function() {
+            saveUserData();
+        })
+        $("#userDeleteBtn").click(function() {
+            deleteUserData();
+        })
+        $("#goUserBtn").click(function() {
+            searchUser();
+        })
+        $(".user-name").live("click",function() {
+            var userId = this.id.substr(5);
+            $.each(userArray, function(index, value) { 
+                if ( value.userId == userId ) {
+                    user = value;
+                    putUserData(value.userId,value.firstName,value.lastName);
+                }
+            })
+                
+        })
     });
+    var userArray = new Array();
+    var user;
+    function searchUser() {        
+        AltCsoAjax.getByUserIds($("#user_q").val(),function(data){
+            userArray = data;
+            var html = '';
+            $.each(data, function(index, value) { 
+                html += '<div class="clickable user-name" id="user-'+ value.userId+'">' + value.firstName + ' ' + value.lastName +'</div>';
+            })
+            console.log(html)
+            $("#user_result").html(html);
+            putUserData("","","");
+        })
+    }
+    function putUserData(id, fn, ln) {
+        $("#user_Id").val(id);
+        $("#user_fn").val(fn);
+        $("#user_ln").val(ln);
+    }
+    function saveUserData() {
+        var id = $("#user_Id").val();
+        var fn = $("#user_fn").val();
+        var ln = $("#user_ln").val();
+        if ( user == null  ) {
+            AltCsoAjax.persistUsers(id,fn,ln,function(){
+                alert("Created");
+            })
+        } else {
+            user.firstName = fn;
+            user.lastName = ln;
+            AltCsoAjax.mergeUsers(user,function() {
+                alert("Updated");
+            })
+        }
+        putUserData("","","");
+    }
+    function deleteUserData() {
+        if ( user != null ) {
+            AltCsoAjax.deleteUsers(user.userId,function(){
+                putUserData("","","");
+                user = null;
+                alert("Deleted");
+                
+            })
+        }
+        
+    }
+    
 </script>
 </html>
