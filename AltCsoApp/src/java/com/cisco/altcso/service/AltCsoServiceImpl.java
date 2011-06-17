@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Intesar Mohammed
  */
 @Service(value = "altCsoServiceImpl")
+@Transactional
 public class AltCsoServiceImpl implements AltCsoService {
 
     @Autowired
@@ -28,7 +29,6 @@ public class AltCsoServiceImpl implements AltCsoService {
     protected UsersDao usersDao;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List<TranslationStatus> getActiveTranslationStatuses() {
         return translationStatusDao.findByStatus("Requested");
     }

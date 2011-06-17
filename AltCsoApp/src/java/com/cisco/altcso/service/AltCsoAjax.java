@@ -57,16 +57,19 @@ public class AltCsoAjax {
     }
     
     // tab-3
-    List<Users> getByUserIds(String userId) {
+    public List<Users> getByUserIds(String userId) {
         return this.altCsoService.getByUserIds(userId);
     }
-    void persistUsers(String userId, String firstName, String lastName) {
+    
+    public void persistUsers(String userId, String firstName, String lastName) {
         this.altCsoService.persistUsers(userId, firstName, lastName);
     }
-    void mergeUsers(Users users) {
+    
+    public void mergeUsers(Users users) {
         this.altCsoService.mergeUsers(users);
     }
-    void deleteUsers(String userId) {
+    
+    public void deleteUsers(String userId) {
         this.altCsoService.deleteUsers(userId);
     }
 }
