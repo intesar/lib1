@@ -42,12 +42,22 @@ public class AltCsoAjax {
 
     public List<TranslationStatus> getTranslationStatusesBetween(String start, String end, Long customerId) {
         try {
-            DateFormat df = new SimpleDateFormat("MM/dd/YYYY");
+            System.out.println(start);
+            System.out.println(end);
+            System.out.println(customerId);
+            
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
             Date startDate = df.parse(start);
-            Date endDate = df.parse(end);
+            
+            DateFormat df1 = new SimpleDateFormat("MM/dd/yyyy");
+            Date endDate = df1.parse(end);
+            
+            System.out.println(startDate);
+            System.out.println(endDate);
+            System.out.println(customerId);
             return altCsoService.getTranslationStatusesBetween(startDate, endDate, customerId);
-        } catch (ParseException ex) {
-            //Logger.getLogger(AltCsoAjax.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return null;
     }
