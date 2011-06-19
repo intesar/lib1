@@ -1,8 +1,10 @@
 package com.cisco.altcso.service;
 
+import com.cisco.altcso.dao.CsoProfileDao;
 import com.cisco.altcso.dao.CustomerDao;
 import com.cisco.altcso.dao.TranslationStatusDao;
 import com.cisco.altcso.dao.UsersDao;
+import com.cisco.altcso.domain.CsoProfile;
 import com.cisco.altcso.domain.Customer;
 import com.cisco.altcso.domain.TranslationStatus;
 import com.cisco.altcso.domain.Users;
@@ -10,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -27,6 +28,8 @@ public class AltCsoServiceImpl implements AltCsoService {
     protected CustomerDao customerDao;
     @Autowired
     protected UsersDao usersDao;
+    @Autowired
+    protected CsoProfileDao csoProfileDao;
 
     @Override
     public List<TranslationStatus> getActiveTranslationStatuses() {
@@ -40,7 +43,12 @@ public class AltCsoServiceImpl implements AltCsoService {
     }
 
     @Override
-    public void saveCustomer(Customer customer) {
+    public void persistCustomer(Customer customer) {
+        customerDao.persist(customer);
+    }
+    
+    @Override
+    public void mergeCustomer(Customer customer) {
         customerDao.merge(customer);
     }
 
@@ -85,6 +93,23 @@ public class AltCsoServiceImpl implements AltCsoService {
         Users user = this.usersDao.find(userId);
         this.usersDao.delete(user);
     }
+
+    @Override
+    public List<CsoProfile> searchCsoProfiles(String name) {
+        return this.csoProfileDao.findByCsoProfileName(name);
+    }
+
+    @Override
+    public void mergeCsoProfile(CsoProfile csoProfile) {
+        this.csoProfileDao.merge(csoProfile);
+    }
+
+    @Override
+    public void deleteCsoProfile(Long csoProfileId) {
+        CsoProfile csoProfile = this.csoProfileDao.find(csoProfileId);
+        this.csoProfileDao.delete(csoProfile);
+    }
+    
     
     
 }
