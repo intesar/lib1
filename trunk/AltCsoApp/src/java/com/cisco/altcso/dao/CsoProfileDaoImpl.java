@@ -1,5 +1,6 @@
 package com.cisco.altcso.dao;
 
+import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.cisco.altcso.domain.CsoProfile;
@@ -11,5 +12,12 @@ import com.cisco.altcso.domain.CsoProfile;
 public class CsoProfileDaoImpl extends GenericDaoImpl<CsoProfile, Long> implements CsoProfileDao {
     public CsoProfileDaoImpl() {
         super(CsoProfile.class);
+    }
+
+    @Override
+    public List<CsoProfile> findByCsoProfileName(String name) {
+        return this.entityManager.createNamedQuery("CsoProfile.findByCsoProfileName")
+                .setParameter("csoProfileName", "%" + name + "%")
+                .getResultList();
     }
 }

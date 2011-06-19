@@ -12,13 +12,17 @@
             <dwr:include method="getActiveTranslationStatuses" />
             <dwr:include method="getTranslationStatusesBetween" />
             <dwr:include method="getCustomerByName" />
-            <dwr:include method="saveCustomer" />
+            <dwr:include method="persistCustomer" />
+            <dwr:include method="mergeCustomer" />
             <dwr:include method="deleteCustomer" />
             <dwr:include method="getAllCutomers" />
             <dwr:include method="getByUserIds" />
             <dwr:include method="persistUsers" />
             <dwr:include method="mergeUsers" />
             <dwr:include method="deleteUsers" />
+            <dwr:include method="searchCsoProfiles" />
+            <dwr:include method="mergeCsoProfile" />
+            <dwr:include method="deleteCsoProfile" />
         </dwr:remote>
     </bean>
     

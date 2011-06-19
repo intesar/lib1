@@ -1,5 +1,6 @@
 package com.cisco.altcso.service;
 
+import com.cisco.altcso.domain.CsoProfile;
 import com.cisco.altcso.domain.Customer;
 import com.cisco.altcso.domain.TranslationStatus;
 import com.cisco.altcso.domain.Users;
@@ -29,7 +30,9 @@ public interface AltCsoService {
      */
     List<Customer> getCustomerByName(String keyword);
     
-    void saveCustomer(Customer customer);
+    void mergeCustomer(Customer customer);
+    
+    void persistCustomer(Customer customer);
     
     void deleteCustomer(Long customerId);
     
@@ -49,4 +52,14 @@ public interface AltCsoService {
     void persistUsers(String userId, String firstName, String lastName);
     void mergeUsers(Users users);
     void deleteUsers(String userId);
+    
+    //
+    // tab-2
+    //
+    
+    List<CsoProfile> searchCsoProfiles(String name);
+    
+    void mergeCsoProfile(CsoProfile csoProfile);
+    
+    void deleteCsoProfile (Long csoProfileId);
 }
