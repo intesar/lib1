@@ -1,6 +1,8 @@
 package com.cisco.altcso.domain;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -14,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -47,6 +50,9 @@ public class Customer implements Serializable {
     private Date expiryDate;
     @Column(name = "MAX_PRIORITY")
     private Long maxPriority;
+    @Column(name = "CREATE_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
     private List<CustomerCsoProfileMap> customerCsoProfileMapList;
 
@@ -97,6 +103,26 @@ public class Customer implements Serializable {
         this.maxPriority = maxPriority;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    @Transient
+    public String getFormatedCreateDate() {
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        return df.format(createDate);
+    }
+    
+    @Transient
+    public String getFormatedExpiryDate() {
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        return df.format(expiryDate);
+    }
+    
     public List<CustomerCsoProfileMap> getCustomerCsoProfileMapList() {
         return customerCsoProfileMapList;
     }

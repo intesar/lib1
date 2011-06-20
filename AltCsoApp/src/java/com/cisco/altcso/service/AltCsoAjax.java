@@ -27,7 +27,7 @@ public class AltCsoAjax {
      * @param keyword
      * @return 
      */
-    public List<Customer> getCustomerByName(String keyword) {
+    public List<Customer> searchCustomerByName(String keyword) {
         return this.altCsoService.getCustomerByName(keyword);
     }
 
