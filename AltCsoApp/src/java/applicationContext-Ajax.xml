@@ -29,5 +29,6 @@
     <dwr:configuration>
         <dwr:convert type="hibernate3" class="com.cisco.altcso.domain.*" />
         <dwr:convert type="collection"  class="java.util.Collection"  />
+        <dwr:convert type="exception"  class="com.cisco.altcso.exception.*"  />
     </dwr:configuration>
 </beans>
