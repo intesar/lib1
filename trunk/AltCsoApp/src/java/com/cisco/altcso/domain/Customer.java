@@ -55,6 +55,8 @@ public class Customer implements Serializable {
     private Date createDate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
     private List<CustomerCsoProfileMap> customerCsoProfileMapList;
+    @Column(name = "tmx")
+    private String tmx;
 
     public Customer() {
     }
@@ -111,18 +113,34 @@ public class Customer implements Serializable {
         this.createDate = createDate;
     }
 
+    public String getTmx() {
+        return tmx;
+    }
+
+    public void setTmx(String tmx) {
+        this.tmx = tmx;
+    }
+
     @Transient
     public String getFormatedCreateDate() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        return df.format(createDate);
+        if (createDate != null) {
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            return df.format(createDate);
+        } else {
+            return "";
+        }
     }
-    
+
     @Transient
     public String getFormatedExpiryDate() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        return df.format(expiryDate);
+        if (expiryDate != null) {
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            return df.format(expiryDate);
+        } else {
+            return "";
+        }
     }
-    
+
     public List<CustomerCsoProfileMap> getCustomerCsoProfileMapList() {
         return customerCsoProfileMapList;
     }

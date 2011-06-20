@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "CsoProfile.findAll", query = "SELECT c FROM CsoProfile c"),
     @NamedQuery(name = "CsoProfile.findByCsoProfileId", query = "SELECT c FROM CsoProfile c WHERE c.csoProfileId = :csoProfileId"),
-    @NamedQuery(name = "CsoProfile.findByCsoProfileName", query = "SELECT c FROM CsoProfile c WHERE c.csoProfileName = :csoProfileName"),
+    @NamedQuery(name = "CsoProfile.findByCsoProfileName", query = "SELECT c FROM CsoProfile c WHERE c.csoProfileName LIKE :csoProfileName"),
     @NamedQuery(name = "CsoProfile.findByDefaultProfile", query = "SELECT c FROM CsoProfile c WHERE c.defaultProfile = :defaultProfile"),
     @NamedQuery(name = "CsoProfile.findByLanguagePair", query = "SELECT c FROM CsoProfile c WHERE c.languagePair = :languagePair"),
     @NamedQuery(name = "CsoProfile.findByTransEngineProfileMapId", query = "SELECT c FROM CsoProfile c WHERE c.transEngineProfileMapId = :transEngineProfileMapId"),
