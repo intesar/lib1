@@ -650,6 +650,7 @@
                     html += '<div class="clickable tab1Result" id="tab1-'+ v.customerId +'">' + v.groupName +'</div>'
                 })
                 $("#resultTab1").html(html);
+                $("#cancelTab1").click();
             })
         })
         $(".tab1Result").live("click",function() {
@@ -859,7 +860,7 @@
             //var queue = 0;
             var words = 0;
             $.each(data, function(index, value) { 
-                arr[index] = [value.ormatedStartTime, value.customerId.groupName, value.sourceLength+"KB", value.formatedEndTime, value.requestId];
+                arr[index] = [value.formatedStartTime, value.customerId.groupName, value.sourceLength+"KB", value.formatedEndTime, value.requestId];
                 words += value.sourceWordCount;
                 time += value.time;
             })

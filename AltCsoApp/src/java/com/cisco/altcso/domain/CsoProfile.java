@@ -48,8 +48,6 @@ public class CsoProfile implements Serializable {
     @Column(name = "LANGUAGE_PAIR")
     private String languagePair;
     @Basic(optional = false)
-//    @Column(name = "TRANS_ENGINE_PROFILE_MAP_ID")
-//    private BigInteger transEngineProfileMapId;
     @Column(name = "CUSTOMER_NAME")
     private String customerName;
     @JoinColumn(name = "TRANS_ENGINE_PROFILE_MAP_ID", referencedColumnName = "TRANS_ENGINE_PROFILE_MAP_ID")
