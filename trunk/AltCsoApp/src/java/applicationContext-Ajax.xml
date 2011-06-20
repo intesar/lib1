@@ -11,7 +11,7 @@
         <dwr:remote javascript="AltCsoAjax">
             <dwr:include method="getActiveTranslationStatuses" />
             <dwr:include method="getTranslationStatusesBetween" />
-            <dwr:include method="getCustomerByName" />
+            <dwr:include method="searchCustomerByName" />
             <dwr:include method="persistCustomer" />
             <dwr:include method="mergeCustomer" />
             <dwr:include method="deleteCustomer" />
