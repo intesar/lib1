@@ -43,75 +43,65 @@
                     <div class="pl-00" style="height:30px;">
                         <div class="sectionTitle" style="width:25%;">Search customer name&nbsp;&nbsp; </div>
                         <div class="pl-25 alignL">
-                            <input type="search" name="q" style="width:200px;">
+                            <input type="search" name="q" id="searchTab1" style="width:200px;">
                         </div>
                         <div class="pl-50 alignL">
-                            <button>Go</button>
+                            <button id="goTab1" >Go</button>
                         </div>
                     </div>
                     <div class="pl-00" style="height:100px; ">
                         <div class="sectionTitle" style="width:25%;">Search results&nbsp;&nbsp;</div>
-                        <div class="pl-25 alignL boxBorder" style="width:25%;height:100%; overflow-y:scroll" overflow-x;hidden;>
+                        <div class="pl-25 alignL boxBorder" style="width:25%;height:100%; overflow-y:scroll; overflow-x:hidden;" id="resultTab1">
                              <div style="margin:3px;">
-                                <div class="clickable">telepresence marketing</div>
-                                <div class="clickable">vtg</div>
-                                <div class="clickable">webex</div>
-                                <div class="clickable">ic capture</div>
-                                <div class="clickable">aaa</div>
-                                <div class="clickable">bbb</div>
-                                <div class="clickable">ccc</div>
-                                <div class="clickable">ddd</div>
-                                <div class="clickable">eee</div>
-                                <div class="clickable">fff</div>
                             </div>  
                         </div>
                     </div>
                     <div class="pl-00" style="margin-top:10px;">
                         <div class="sectionTitle" style="width:25%;">Customer ID&nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <div class="itemValue">000321</div>
+                            <div class="itemValue" id="customerIdTab1">000321</div>
                         </div>
                         <div class="pl-50" style="width:20%;height:100%;">
                             <div>Date created:&nbsp;&nbsp;</div>
                         </div>
                         <div class="pl-60 alignL" style="width:25%;height:100%;">
-                            <div class="itemValue">5/12/2011</div>
+                            <div class="itemValue" id="createdDateTab1">5/12/2011</div>
                         </div>
                     </div>
                     <div class="pl-00">
                         <div class="sectionTitle" style="width:25%;">Customer Name&nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <input type="text" name="customerID" width="210" />
+                            <input type="text" name="customerID" id="customerNameTab1" width="210" />
                         </div>
                     </div>
                     <div class="pl-00">
                         <div class="sectionTitle" style="width:25%;">Appkey&nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <div class="itemValue">12345</div>
+                            <div class="itemValue" id="appKeyTab1">12345</div>
                         </div>
                         <div class="pl-50 alignL">
-                            <button>Generate</button>
+                            <button id="generateTab1">Generate</button>
                         </div>
                     </div>
                     <div class="pl-00">
                         <div class="sectionTitle" style="width:25%;">Expiration date&nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <input type="text" class="datepicker" style="margin-right:5px;">
+                            <input type="text" class="datepicker" style="margin-right:5px;" id="expirationDateTab1">
                         </div>
                     </div>
                     <div class="pl-00">
                         <div class="sectionTitle" style="width:25%;">Maximum Priority&nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <input type="text" name="customerID" width="210" />
+                            <input type="text" name="customerID" width="210" id="maximumPriorityTab1"/>
                         </div>
                         <div class="pl-50 alignL">
-                            <button>Save</button>
+                            <button id="saveTab1">Save</button>
                         </div>
                         <div class="pl-60 alignL">
-                            <button>Cancel</button>
+                            <button id="cancelTab1">Cancel</button>
                         </div>
                         <div class="pl-70 alignL">
-                            <button>Delete</button>
+                            <button id="deleteTab1">Delete</button>
                         </div>
                     </div>
 
@@ -485,11 +475,11 @@
                             </select>
                         </div>
                         <div class="pl-50 alignL" style="width:25%;height:100%;">
-                             &nbsp;&nbsp;<input type="button" id="tab4GoBtn" value="Go" />
+                            &nbsp;&nbsp;<input type="button" id="tab4GoBtn" value="Go" />
                         </div>
-                        
+
                     </div>
-                    
+
                     <div class="pl-00" style="height:16px; ">
                         <div class="sectionTitle" style="width:25%;">Summary&nbsp;&nbsp;</div>
                         <div class="pl-25 itemTitle" style="width:25%;height:100%;">Number of requests processed:&nbsp;&nbsp;</div>
@@ -529,7 +519,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                   
+
                                 </tbody>
                             </table>
                         </div>
@@ -637,61 +627,10 @@
 <!-- script src="./js/jquery-ui-1.8.13.custom.min.js"></script -->
 <!-- script type="text/javascript" language="javascript" src="data.js"></script -->
 <script type="text/javascript" charset="utf-8">
-    var oTable4;
-    function displayTab4() {
-        var startTime = $("#tab4st").val();
-        var endTime = $("#tab4et").val();
-        var customerId = $("#tab4customerId").attr('value');
-        AltCsoAjax.getTranslationStatusesBetween(startTime, endTime, customerId, function(data){
-            $("#tab4TotalReq").val(data.length);
-            $("#tab4AvgTime").val(data.length);
-            $("#tab4AvgQueueTime").val(data.length);
-            $("#tab4AvgWords").val(data.length);
-            
-            var arr = new Array();
-            $.each(data, function(index, value) { 
-                arr[index] = [value.ormatedStartTime, value.customerId.groupName, value.sourceLength+"KB", value.formatedEndTime, value.requestId]
-            })
-            oTable4.fnClearTable();
-            oTable4.fnAddData( arr );
-        })
-    }
-    var oTable;
-    function displayTab5(){
-        AltCsoAjax.getActiveTranslationStatuses(function(data){
-            var arr = new Array();
-            $.each(data, function(index, value) { 
-                arr[index] = [value.requestId, value.customerId.groupName, value.sourceLength+"MB", value.formatedStartTime]
-            })
-            oTable.fnClearTable();
-            oTable.fnAddData( arr );
-        })
-    }
+    var customerArray = new Array();
+    var customer_ = null;
     $(document).ready(function() {
-        AltCsoAjax.getAllCutomers(function(data){
-            $.each(data, function(index, value) { 
-              $("#tab4customerId").append('<option value="' + value.customerId +'" >'+ value.groupName +'</option>');  
-            })
-        });
-        $("#tab4GoBtn").click(function(){
-            displayTab4();
-        })
-        oTable4 = $('#requestDataTable').dataTable( {	
-            "bFilter": false,
-            "sScrollY": "260px",
-            "aLengthMenu": [10, 20, 40],
-            "iDisplayLength": 10
-        });	
-	
-        oTable = $('#queueInfoDataTable').dataTable( {		
-            "bFilter": false,
-            "sScrollY": "410px",
-            "aLengthMenu": [25, 50, 100],
-            "iDisplayLength": 25
-        });
-        $("#refreshOTable").click(function() {
-            displayTab5();
-        })
+        
         $( ".datepicker" ).datepicker({
             showOn: "button",	
             buttonImage: "images/calendar.gif",			
@@ -700,7 +639,52 @@
         $("#help").click(function() {
             $("#dialog").dialog();
         });
-        displayTab5();
+        // Tab 1
+        $("#goTab1").click(function() {
+            AltCsoAjax.searchCustomerByName($("#searchTab1").val(), function(data){
+                var html = '';
+                $.each(data, function(i, v){
+                    customerArray[v.customerId] = v;
+                    html += '<div class="clickable tab1Result" id="tab1-'+ v.customerId +'">' + v.groupName +'</div>'
+                })
+                $("#resultTab1").html(html);
+            })
+        })
+        $(".tab1Result").live("click",function() {
+            customer_ = customerArray[this.attr("id").substr(5)];
+            $("#customerIdTab1").html(customer_.customerId);
+            $("#createdDateTab1").html(customer_.formatedCreateDate);
+            $("#customerNameTab1").val(customer_.groupName);
+            $("#appKeyTab1").html(customer_.appkey);
+            $("#expirationDateTab1").val(customer_.formatedExpiryDate);
+            $("#maximumPriorityTab1").val(customer_.maxPriority);
+            // tmx goes here
+        })
+        $("#cancelTab1").click(function() {
+            customer_ = null;
+            $("#customerIdTab1").html("");
+            $("#createdDateTab1").html("");
+            $("#customerNameTab1").val("");
+            $("#appKeyTab1").html("");
+            $("#expirationDateTab1").val("");
+            $("#maximumPriorityTab1").val("");
+        })
+        $("#saveTab1").click(function() {
+            if (customer_ == null ) {
+                customer_ = {customerId:null, formatedCreateDate:null, groupName:null, appkey:null, formatedExpiryDate:null, maxPriority:null};
+                AltCsoAjax.persistCustomer(customer_);
+            } else {
+                AltCsoAjax.mergeCustomer(customer_);
+            }
+        })
+        $("#deleteTab1").click(function(){
+            AltCsoAjax.deleteCustomer(customer_.customerId);
+        })
+        // End Tab 1
+        // Tab 2
+        
+        // End Tab2
+        // Tab 3
         $("#userCancelBtn").click(function() {
             putUserData("","","");
             user = null;
@@ -724,7 +708,44 @@
             })
                 
         })
+        // End Tab 3
+        // Tab 4
+        AltCsoAjax.getAllCutomers(function(data){
+            $.each(data, function(index, value) { 
+                $("#tab4customerId").append('<option value="' + value.customerId +'" >'+ value.groupName +'</option>');  
+            })
+        });
+        $("#tab4GoBtn").click(function(){
+            displayTab4();
+        })
+        oTable4 = $('#requestDataTable').dataTable( {	
+            "bFilter": false,
+            "sScrollY": "260px",
+            "aLengthMenu": [10, 20, 40],
+            "iDisplayLength": 10
+        });	
+	
+        // End Tab 4
+        // Tab 5
+        oTable = $('#queueInfoDataTable').dataTable( {		
+            "bFilter": false,
+            "sScrollY": "410px",
+            "aLengthMenu": [25, 50, 100],
+            "iDisplayLength": 25
+        });
+        $("#refreshOTable").click(function() {
+            displayTab5();
+        })
+        displayTab5();
+        // End Tab 5
     });
+    // Tab 1
+    
+    // End Tab 1
+    // Tab 2
+    
+    // End Tab 2
+    // Tab 3
     var userArray = new Array();
     var user;
     function searchUser() {        
@@ -772,6 +793,40 @@
         }
         
     }
-    
+    // end Tab 3
+    // Tab 4
+    var oTable4;
+    function displayTab4() {
+        var startTime = $("#tab4st").val();
+        var endTime = $("#tab4et").val();
+        var customerId = $("#tab4customerId").attr('value');
+        AltCsoAjax.getTranslationStatusesBetween(startTime, endTime, customerId, function(data){
+            $("#tab4TotalReq").val(data.length);
+            $("#tab4AvgTime").val(data.length);
+            $("#tab4AvgQueueTime").val(data.length);
+            $("#tab4AvgWords").val(data.length);
+            
+            var arr = new Array();
+            $.each(data, function(index, value) { 
+                arr[index] = [value.ormatedStartTime, value.customerId.groupName, value.sourceLength+"KB", value.formatedEndTime, value.requestId]
+            })
+            oTable4.fnClearTable();
+            oTable4.fnAddData( arr );
+        })
+    }
+    // End Tab 4
+    // Tab 5
+    var oTable;
+    function displayTab5(){
+        AltCsoAjax.getActiveTranslationStatuses(function(data){
+            var arr = new Array();
+            $.each(data, function(index, value) { 
+                arr[index] = [value.requestId, value.customerId.groupName, value.sourceLength+"MB", value.formatedStartTime]
+            })
+            oTable.fnClearTable();
+            oTable.fnAddData( arr );
+        })
+    }
+    // Tab 5
 </script>
 </html>
