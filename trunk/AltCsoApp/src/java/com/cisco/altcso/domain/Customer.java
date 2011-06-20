@@ -135,6 +135,9 @@ public class Customer implements Serializable {
             return "";
         }
     }
+    
+    public void setFormatedCreateDate(String dt) {
+    }
 
     @Transient
     public String getFormatedExpiryDate() {
