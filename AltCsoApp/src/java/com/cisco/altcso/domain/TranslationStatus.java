@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TranslationStatus.findByCustomerIdBetweenDates", query = "SELECT t FROM TranslationStatus t "
-        + "WHERE t.customerId.customerId = :customerId AND startTime >= :startTime AND endTime <= :endTime"),
+    + "WHERE t.customerId.customerId = :customerId AND startTime >= :startTime AND endTime <= :endTime"),
     @NamedQuery(name = "TranslationStatus.findAll", query = "SELECT t FROM TranslationStatus t"),
     @NamedQuery(name = "TranslationStatus.findByRequestId", query = "SELECT t FROM TranslationStatus t WHERE t.requestId = :requestId"),
     @NamedQuery(name = "TranslationStatus.findByStatus", query = "SELECT t FROM TranslationStatus t WHERE t.status = :status"),
@@ -229,17 +229,27 @@ public class TranslationStatus implements Serializable {
 
     private String getFormatedDate(Date dt) {
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        if ( dt != null ) {
-        return df.format(dt);
+        if (dt != null) {
+            return df.format(dt);
         } else {
             return "";
         }
     }
+
     @Transient
     public String getFormatedEndTime() {
         return getFormatedDate(endTime);
     }
-    
+
+    @Transient
+    public Long getTime() {
+        if (endTime != null && startTime != null) {
+            return endTime.getTime() - startTime.getTime();
+        } else {
+            return 0L;
+        }
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

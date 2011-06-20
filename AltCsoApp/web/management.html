@@ -52,7 +52,7 @@
                     <div class="pl-00" style="height:100px; ">
                         <div class="sectionTitle" style="width:25%;">Search results&nbsp;&nbsp;</div>
                         <div class="pl-25 alignL boxBorder" style="width:25%;height:100%; overflow-y:scroll; overflow-x:hidden;" id="resultTab1">
-                             <div style="margin:3px;">
+                            <div style="margin:3px;">
                             </div>  
                         </div>
                     </div>
@@ -290,10 +290,10 @@
                         <div class="sectionTitle" style="width:25%;">Search profile name
                             &nbsp;&nbsp; </div>
                         <div class="pl-25 alignL">
-                            <input type="search" name="q" style="width:200px;">
+                            <input type="search" name="q" id="searchTab2" style="width:200px;">
                         </div>          
                         <div class="pl-50 alignL">
-                            <button>Go</button>
+                            <button id="goTab2">Go</button>
                         </div>
                         <div class="pl-60 alignL" style="width:50%;">
                             <button style="white-space: nowrap;width:160px;">Update Profile Mapping</button>
@@ -301,13 +301,13 @@
                     </div>
                     <div class="pl-00" style="height:160px; ">
                         <div class="sectionTitle" style="width:25%;">Search results&nbsp;&nbsp;</div>
-                        <div class="pl-25 alignL boxBorder" style="width:50%;height:100%;"></div>
+                        <div class="pl-25 alignL boxBorder" style="width:50%;height:100%;" id="resultTab2"></div>
                     </div>
                     <div class="pl-00" style="margin-top:7px;">
                         <div class="sectionTitle" style="width:25%;">Profile name
                             &nbsp;&nbsp;</div>
                         <div class="pl-25 alignL" style="width:25%;height:100%;">
-                            <input type="text" name="customerID" />
+                            <input type="text" name="customerID" id="profileNameTab2"/>
                         </div>
                     </div>
                     <div class="pl-00">
@@ -392,10 +392,10 @@
                         </div>
                         <div class="pl-50 alignL"> </div>
                         <div class="pl-60 alignL">
-                            <button>Save</button>
+                            <button id="saveTab2">Save</button>
                         </div>
                         <div class="pl-70 alignL">
-                            <button>Delete</button>
+                            <button id="deleteTab2">Delete</button>
                         </div>
                     </div>
                     </form>
@@ -519,14 +519,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="pl-00" style="position:absolute; top:515px; height:16px; ">
                         <div class="pl alignL" style="left:70%;">
-                            <button>Export</button>
+                            <button id="export">Export</button>
                         </div>
                         <div class="pl alignL" style="left:80%;">
                             <button>Clear</button>
@@ -624,11 +623,14 @@
 <script type="text/javascript" language="javascript" src="./js/jquery-ui-1.8.13.custom.min.js"></script>
 <script type='text/javascript' src='/AltCsoApp/dwr/interface/AltCsoAjax.js'></script>
 <script type='text/javascript' src='/AltCsoApp/dwr/engine.js'></script>
+<script type="text/javascript" src="http://www.kunalbabre.com/projects/table2CSV.js" > </script>
 <!-- script src="./js/jquery-ui-1.8.13.custom.min.js"></script -->
 <!-- script type="text/javascript" language="javascript" src="data.js"></script -->
 <script type="text/javascript" charset="utf-8">
     var customerArray = new Array();
     var customer_ = null;
+    var profileArray = new Array();
+    var profile_ = null;
     $(document).ready(function() {
         
         $( ".datepicker" ).datepicker({
@@ -651,7 +653,7 @@
             })
         })
         $(".tab1Result").live("click",function() {
-            customer_ = customerArray[this.attr("id").substr(5)];
+            customer_ = customerArray[this.id.substr(5)];
             $("#customerIdTab1").html(customer_.customerId);
             $("#createdDateTab1").html(customer_.formatedCreateDate);
             $("#customerNameTab1").val(customer_.groupName);
@@ -682,7 +684,32 @@
         })
         // End Tab 1
         // Tab 2
-        
+        $("#goTab2").click(function() {
+            AltCsoAjax.searchCsoProfiles($("#searchTab2").val(), function(data){
+                var html = '';
+                $.each(data, function(i, v){
+                    profileArray[v.csoProfileId] = v;
+                    html += '<div class="clickable tab2Result" id="tab2-'+ v.csoProfileId +'">' + v.csoProfileName +'</div>'
+                })
+                $("#resultTab2").html(html);
+            })
+        })
+        $(".tab2Result").live("click",function() {
+            profile_ = profileArray[this.id.substr(5)];
+            $("#profileNameTab2").val(profile_.csoProfileName);
+            // default goes here
+        })
+        $("#saveTab2").click(function(){
+            profile_.csoProfileName = $("#profileNameTab2").val();
+            AltCsoAjax.mergeCsoProfile(profile_, function(){
+                alert("saved");
+            })
+        })
+        $("#deleteTab2").click(function(){
+            AltCsoAjax.deleteCsoProfile(profile_.csoProfileId, function(){
+                alert("deleted");
+            })
+        })
         // End Tab2
         // Tab 3
         $("#userCancelBtn").click(function() {
@@ -724,7 +751,12 @@
             "aLengthMenu": [10, 20, 40],
             "iDisplayLength": 10
         });	
-	
+        $("#export").click(function(){
+            alert($('#requestDataTable').table2CSV({
+                delivery:'value',
+                header:['x','y','z','a','b']
+            }));
+        })
         // End Tab 4
         // Tab 5
         oTable = $('#queueInfoDataTable').dataTable( {		
@@ -801,18 +833,26 @@
         var endTime = $("#tab4et").val();
         var customerId = $("#tab4customerId").attr('value');
         AltCsoAjax.getTranslationStatusesBetween(startTime, endTime, customerId, function(data){
-            $("#tab4TotalReq").val(data.length);
-            $("#tab4AvgTime").val(data.length);
-            $("#tab4AvgQueueTime").val(data.length);
-            $("#tab4AvgWords").val(data.length);
-            
             var arr = new Array();
+            var time = 0;
+            //var queue = 0;
+            var words = 0;
             $.each(data, function(index, value) { 
-                arr[index] = [value.ormatedStartTime, value.customerId.groupName, value.sourceLength+"KB", value.formatedEndTime, value.requestId]
+                arr[index] = [value.ormatedStartTime, value.customerId.groupName, value.sourceLength+"KB", value.formatedEndTime, value.requestId];
+                words += value.sourceWordCount;
+                time += value.time;
             })
+            $("#tab4TotalReq").html(data.length);
+            $("#tab4AvgTime").html(time/data.length + " Mins");
+            $("#tab4AvgQueueTime").html(time/data.length + " Mins");
+            $("#tab4AvgWords").html(words/data.length);
             oTable4.fnClearTable();
             oTable4.fnAddData( arr );
         })
+    }
+    function popup(data) {
+        window.location='data:text/excel;charset=utf8,' + encodeURIComponent(data);
+        return true; 
     }
     // End Tab 4
     // Tab 5
