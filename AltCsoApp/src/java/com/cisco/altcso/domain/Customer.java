@@ -2,6 +2,7 @@ package com.cisco.altcso.domain;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -9,10 +10,12 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,7 +40,9 @@ public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @SequenceGenerator(name = "Cust_Gen", sequenceName = "CUSTOMER_ID_SEQUENCE")
     @Id
+    @GeneratedValue(generator = "Cust_Gen")
     @Basic(optional = false)
     @Column(name = "CUSTOMER_ID")
     private Long customerId;
@@ -138,6 +143,17 @@ public class Customer implements Serializable {
             return df.format(expiryDate);
         } else {
             return "";
+        }
+    }
+
+    public void setFormatedExpiryDate(String dt) {
+        if (!dt.equals(getFormatedExpiryDate())) {
+            try {
+                DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+                this.expiryDate = df.parse(dt);
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 

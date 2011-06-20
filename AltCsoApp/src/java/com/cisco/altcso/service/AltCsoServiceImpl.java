@@ -44,6 +44,7 @@ public class AltCsoServiceImpl implements AltCsoService {
 
     @Override
     public void persistCustomer(Customer customer) {
+        customer.setCreateDate(new Date());
         customerDao.persist(customer);
     }
     
