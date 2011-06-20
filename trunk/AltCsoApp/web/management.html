@@ -109,9 +109,9 @@
                         <div class="sectionTitle" style="width:25%;">Generate TMX
                             &nbsp;&nbsp;</div>
                         <div class="pl-25 alignL">
-                            <input type="radio" name="gtmx" value="yes" checked="checked">
+                            <input type="radio" name="gtmx" value="Y" checked="checked">
                             Yes
-                            <input type="radio" name="gtmx" value="no">
+                            <input type="radio" name="gtmx" value="N">
                             No </div>
                     </div>
 
@@ -314,9 +314,9 @@
                         <div class="sectionTitle" style="width:25%;">Default
                             &nbsp;&nbsp;</div>
                         <div class="pl-25 alignL">
-                            <input type="radio" name="hyouka" value="Yes">
+                            <input type="radio" name="hyouka" value="Y">
                             Yes
-                            <input type="radio" name="hyouka" value="No" checked="checked">
+                            <input type="radio" name="hyouka" value="N" checked="checked">
                             No </div>
                     </div>
                     <div class="pl-00" style="margin-top:7px;">
@@ -660,7 +660,11 @@
             $("#appKeyTab1").html(customer_.appkey);
             $("#expirationDateTab1").val(customer_.formatedExpiryDate);
             $("#maximumPriorityTab1").val(customer_.maxPriority);
-            // tmx goes here
+            $("input[name='gtmx']").each(function() {
+                if($(this).val() == customer_.tmx) {
+                    $(this).attr("checked","checked");
+                }
+            })
         })
         $("#cancelTab1").click(function() {
             customer_ = null;
@@ -670,12 +674,19 @@
             $("#appKeyTab1").html("");
             $("#expirationDateTab1").val("");
             $("#maximumPriorityTab1").val("");
+            $("input[name='gtmx']").each(function() {
+                if($(this).val() == "N") {
+                    $(this).attr("checked","checked");
+                }
+            })
         })
         $("#saveTab1").click(function() {
             if (customer_ == null ) {
-                customer_ = {customerId:null, formatedCreateDate:null, groupName:null, appkey:null, formatedExpiryDate:null, maxPriority:null};
-                AltCsoAjax.persistCustomer(customer_);
+                customer_ = {customerId:null, formatedCreateDate:null, groupName:null, appkey:null, formatedExpiryDate:null, maxPriority:null, tmx:null};
+                updateCustomer()
+                AltCsoAjax.persistCustomer(customer_);                
             } else {
+                updateCustomer()
                 AltCsoAjax.mergeCustomer(customer_);
             }
         })
@@ -697,10 +708,15 @@
         $(".tab2Result").live("click",function() {
             profile_ = profileArray[this.id.substr(5)];
             $("#profileNameTab2").val(profile_.csoProfileName);
-            // default goes here
+            $("input[name='hyouka']").each(function() {
+                if($(this).val() == profile_.defaultProfile) {
+                    $(this).attr("checked","checked");
+                }
+            })
         })
         $("#saveTab2").click(function(){
             profile_.csoProfileName = $("#profileNameTab2").val();
+            profile_.defaultProfile = $("input[name='hyouka']:checked").val();
             AltCsoAjax.mergeCsoProfile(profile_, function(){
                 alert("saved");
             })
@@ -772,7 +788,12 @@
         // End Tab 5
     });
     // Tab 1
-    
+    function updateCustomer() {
+        customer_.groupName = $("#customerNameTab1").val();
+        customer_.formatedExpiryDate = $("#expirationDateTab1").val();
+        customer_.maxPriority = $("#maximumPriorityTab1").val();
+        customer_.tmx = $("input[name='gtmx']:checked").val();
+    }
     // End Tab 1
     // Tab 2
     
