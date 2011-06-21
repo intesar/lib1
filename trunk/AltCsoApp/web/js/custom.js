@@ -37,6 +37,7 @@ $(document).ready(function() {
                 $(this).attr("checked","checked");
             }
         })
+        updateTab1Dropdowns();
     })
     $("#cancelTab1").click(function() {
         customer_ = null;
@@ -148,9 +149,9 @@ $(document).ready(function() {
         "iDisplayLength": 10
     });	
     $("#export").click(function(){
-        alert($('#requestDataTable').table2CSV({
+        popup($('#requestDataTable').table2CSV({
             delivery:'value',
-            header:['x','y','z','a','b']
+            header:['Request','Customer Name','Job Size','Finished','Transaction ID']
         }));
     })
     // End Tab 4
@@ -173,6 +174,69 @@ function updateCustomer() {
     customer_.formatedExpiryDate = $("#expirationDateTab1").val();
     customer_.maxPriority = $("#maximumPriorityTab1").val();
     customer_.tmx = $("input[name='gtmx']:checked").val();
+}
+function updateTab1Dropdowns() {
+    var postFix = '';//'<option>default</option>'; -- incase we wanna fix it at UI
+    var enes = '';
+    $.each(customer_.enes, function(i, v){
+        enes += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    enes += postFix;
+    $("#enes").html(enes);
+    var enfr = '<option>default</option>';
+    $.each(customer_.enfr, function(i, v){
+        enfr += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    enfr += postFix;
+    $("#enfr").html(enfr);
+    var enjp = '<option>default</option>';
+    $.each(customer_.enjp, function(i, v){
+        enjp += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    enjp += postFix;
+    $("#enjp").html(enjp);
+    var enpt = '<option>default</option>';
+    $.each(customer_.enpt, function(i, v){
+        enpt += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    enpt += postFix;
+    $("#enpt").html(enpt);
+    var enzh = '<option>default</option>';
+    $.each(customer_.enzh, function(i, v){
+        enzh += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    enzh += postFix;
+    $("#enzh").html(enzh);
+    var esen = '<option>default</option>';
+    $.each(customer_.esen, function(i, v){
+        esen += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    esen += postFix;
+    $("#esen").html(esen);
+    var fren = '<option>default</option>';
+    $.each(customer_.fren, function(i, v){
+        fren += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    fren += postFix;
+    $("#fren").html(fren);
+    var jpen = '<option>default</option>';
+    $.each(customer_.jpen, function(i, v){
+        jpen += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    jpen += postFix;
+    $("#jpen").html(jpen);
+    var pten = '<option>default</option>';
+    $.each(customer_.pten, function(i, v){
+        pten += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    pten += postFix;
+    $("#pten").html(pten);
+    var zhen = '<option>default</option>';
+    $.each(customer_.zhen, function(i, v){
+        zhen += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+    })
+    zhen += postFix;
+    $("#zhen").html(zhen);
 }
 // End Tab 1
 // Tab 2
@@ -252,7 +316,7 @@ function displayTab4() {
     })
 }
 function popup(data) {
-    window.location='data:text/excel;charset=utf8,' + encodeURIComponent(data);
+    window.location='data:text/xsl;charset=utf8,' + encodeURIComponent(data);
     return true; 
 }
 // End Tab 4
