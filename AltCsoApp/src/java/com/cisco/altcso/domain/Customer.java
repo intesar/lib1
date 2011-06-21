@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c"),
     @NamedQuery(name = "Customer.findByCustomerId", query = "SELECT c FROM Customer c WHERE c.customerId = :customerId"),
     @NamedQuery(name = "Customer.findByGroupName", query = "SELECT c FROM Customer c WHERE c.groupName LIKE :groupName"),
+    @NamedQuery(name = "Customer.findMaxOfAppkey", query = "SELECT MAX(c.appkey) FROM Customer c"),
     @NamedQuery(name = "Customer.findByAppkey", query = "SELECT c FROM Customer c WHERE c.appkey = :appkey"),
     @NamedQuery(name = "Customer.findByExpiryDate", query = "SELECT c FROM Customer c WHERE c.expiryDate = :expiryDate"),
     @NamedQuery(name = "Customer.findByMaxPriority", query = "SELECT c FROM Customer c WHERE c.maxPriority = :maxPriority")})
@@ -51,7 +52,7 @@ public class Customer implements Serializable {
     @Column(name = "GROUP_NAME")
     private String groupName;
     @Column(name = "APPKEY")
-    private String appkey;
+    private Long appkey;
     @Column(name = "EXPIRY_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date expiryDate;
@@ -88,11 +89,11 @@ public class Customer implements Serializable {
         this.groupName = groupName;
     }
 
-    public String getAppkey() {
+    public Long getAppkey() {
         return appkey;
     }
 
-    public void setAppkey(String appkey) {
+    public void setAppkey(Long appkey) {
         this.appkey = appkey;
     }
 
@@ -138,6 +139,8 @@ public class Customer implements Serializable {
         }
         return list;
     }
+    
+    public void setEnes(List<CsoProfile> list){}
 
     @Transient
     public List<CsoProfile> getEnfr() {
@@ -150,6 +153,8 @@ public class Customer implements Serializable {
         return list;
     }
 
+    public void setEnfr(List<CsoProfile> list){}
+    
     @Transient
     public List<CsoProfile> getEnjp() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
@@ -161,6 +166,8 @@ public class Customer implements Serializable {
         return list;
     }
 
+    public void setEnjp(List<CsoProfile> list){}
+    
     @Transient
     public List<CsoProfile> getEnpt() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
@@ -183,6 +190,8 @@ public class Customer implements Serializable {
         return list;
     }
 
+    public void setEnzh(List<CsoProfile> list){}
+    
     @Transient
     public List<CsoProfile> getEsen() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
@@ -194,6 +203,8 @@ public class Customer implements Serializable {
         return list;
     }
 
+    public void setEsen(List<CsoProfile> list){}
+    
     @Transient
     public List<CsoProfile> getFren() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
@@ -216,6 +227,8 @@ public class Customer implements Serializable {
         return list;
     }
 
+    public void setJpen(List<CsoProfile> list){}
+    
     @Transient
     public List<CsoProfile> getPten() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
@@ -237,6 +250,7 @@ public class Customer implements Serializable {
         }
         return list;
     }
+    public void setZhen(List<CsoProfile> list){}
 
     @Transient
     public String getFormatedCreateDate() {

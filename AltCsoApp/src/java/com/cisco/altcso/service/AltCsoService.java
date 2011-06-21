@@ -12,14 +12,7 @@ import java.util.List;
  * @author Intesar Mohammed
  */
 public interface AltCsoService {
-    //
-    //  tab-5
-    //
-    /**
-     *  
-     */
-    List<TranslationStatus> getActiveTranslationStatuses();
-    
+
     //
     //  tab-1
     //
@@ -29,37 +22,47 @@ public interface AltCsoService {
      * @return 
      */
     List<Customer> getCustomerByName(String keyword);
-    
+
     void mergeCustomer(Customer customer);
-    
+
     void persistCustomer(Customer customer);
-    
+
     void deleteCustomer(Long customerId);
     
-    //
-    // tab-4
-    //
-    
-    List<TranslationStatus> getTranslationStatusesBetween(Date start, Date end, Long customerId );
-    
-    List<Customer> getAllCutomers();
-    
-    //
-    // tab-3
-    //
-    
-    List<Users> getByUserIds(String userId);
-    void persistUsers(String userId, String firstName, String lastName);
-    void mergeUsers(Users users);
-    void deleteUsers(String userId);
-    
+    Long generateAppkey();
+
     //
     // tab-2
     //
-    
     List<CsoProfile> searchCsoProfiles(String name);
-    
+
     void mergeCsoProfile(CsoProfile csoProfile);
-    
-    void deleteCsoProfile (Long csoProfileId);
+
+    void deleteCsoProfile(Long csoProfileId);
+
+    //
+    // tab-3
+    //
+    List<Users> getByUserIds(String userId);
+
+    void persistUsers(String userId, String firstName, String lastName);
+
+    void mergeUsers(Users users);
+
+    void deleteUsers(String userId);
+
+    //
+    // tab-4
+    //
+    List<TranslationStatus> getTranslationStatusesBetween(Date start, Date end, Long customerId);
+
+    List<Customer> getAllCutomers();
+
+    //
+    //  tab-5
+    //
+    /**
+     *  
+     */
+    List<TranslationStatus> getActiveTranslationStatuses();
 }
