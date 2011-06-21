@@ -110,7 +110,14 @@ public class AltCsoServiceImpl implements AltCsoService {
         CsoProfile csoProfile = this.csoProfileDao.find(csoProfileId);
         this.csoProfileDao.delete(csoProfile);
     }
-    
-    
+
+    @Override
+    public Long generateAppkey() {
+        Long currentKey = this.customerDao.findMaxOfAppkey();
+        if ( currentKey == null ) {
+            currentKey = 1L;
+        }
+        return ++currentKey;
+    }
     
 }

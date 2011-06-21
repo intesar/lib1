@@ -87,7 +87,7 @@ public class AltCsoServiceImplTest {
     public void testPersistCustomer() {
         System.out.println("persistCustomer");
         Customer customer = new Customer();
-        customer.setAppkey("xx");
+        customer.setAppkey(333L);
         customer.setCreateDate(new Date());
         //customer.setCustomerId(1L);
         customer.setExpiryDate(new Date());
@@ -105,7 +105,7 @@ public class AltCsoServiceImplTest {
     public void testMergeCustomer() {
         System.out.println("mergeCustomer");
         Customer customer = new Customer();
-        customer.setAppkey("xx");
+        customer.setAppkey(555L);
         customer.setCreateDate(new Date());
         customer.setCustomerId(1L);
         customer.setExpiryDate(new Date());

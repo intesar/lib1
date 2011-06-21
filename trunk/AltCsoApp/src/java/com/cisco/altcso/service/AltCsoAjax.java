@@ -91,6 +91,15 @@ public class AltCsoAjax {
         }
         throw new ErrorProcessingRequest();
     }
+    
+    public Long generateAppkey() {
+        try {
+            return this.altCsoService.generateAppkey();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        throw new ErrorProcessingRequest();
+    }
 
     //////////////////////////////////////
     //  Tab 2

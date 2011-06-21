@@ -20,4 +20,9 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer, Long> implements C
                 .setParameter("groupName", keyword)
                 .getResultList();
     }
+
+    @Override
+    public Long findMaxOfAppkey() {
+        return (Long) this.entityManager.createNamedQuery("Customer.findMaxOfAppkey").getSingleResult();
+    }
 }

@@ -74,6 +74,12 @@ $(document).ready(function() {
     $("#deleteTab1").click(function(){
         AltCsoAjax.deleteCustomer(customer_.customerId);
     })
+    $("#generateTab1").click(function(){
+        AltCsoAjax.generateAppkey(function(key){
+            $("#appKeyTab1").html(key);
+            customer_.appkey = key;
+        })
+    })
     // End Tab 1
     // Tab 2
     $("#goTab2").click(function() {
@@ -180,60 +186,70 @@ function updateTab1Dropdowns() {
     var enes = '';
     $.each(customer_.enes, function(i, v){
         enes += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_enes").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     enes += postFix;
     $("#enes").html(enes);
-    var enfr = '<option>default</option>';
+    var enfr = '';
     $.each(customer_.enfr, function(i, v){
         enfr += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_enfr").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     enfr += postFix;
     $("#enfr").html(enfr);
-    var enjp = '<option>default</option>';
+    var enjp = '';
     $.each(customer_.enjp, function(i, v){
         enjp += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_enjp").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     enjp += postFix;
     $("#enjp").html(enjp);
-    var enpt = '<option>default</option>';
+    var enpt = '';
     $.each(customer_.enpt, function(i, v){
         enpt += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_enpt").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     enpt += postFix;
     $("#enpt").html(enpt);
-    var enzh = '<option>default</option>';
+    var enzh = '';
     $.each(customer_.enzh, function(i, v){
         enzh += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_enzh").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     enzh += postFix;
     $("#enzh").html(enzh);
-    var esen = '<option>default</option>';
+    var esen = '';
     $.each(customer_.esen, function(i, v){
         esen += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_esen").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     esen += postFix;
     $("#esen").html(esen);
-    var fren = '<option>default</option>';
+    var fren = '';
     $.each(customer_.fren, function(i, v){
         fren += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_fren").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     fren += postFix;
     $("#fren").html(fren);
-    var jpen = '<option>default</option>';
+    var jpen = '';
     $.each(customer_.jpen, function(i, v){
         jpen += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_jpen").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     jpen += postFix;
     $("#jpen").html(jpen);
-    var pten = '<option>default</option>';
+    var pten = '';
     $.each(customer_.pten, function(i, v){
         pten += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_pten").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     pten += postFix;
     $("#pten").html(pten);
-    var zhen = '<option>default</option>';
+    var zhen = '';
     $.each(customer_.zhen, function(i, v){
         zhen += '<option value="'+ v.csoProfileId +'">'+ v.csoProfileName +'</option>'
+        $(".mt_zhen").html(v.transEngineProfileMapId.transEngineProfileName);
     })
     zhen += postFix;
     $("#zhen").html(zhen);

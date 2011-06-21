@@ -9,4 +9,6 @@ import java.util.List;
 public interface CustomerDao extends GenericDao<Customer, Long> {
     
     public List<Customer> findByGroupName(String keyword);
+    
+    public Long findMaxOfAppkey();
 }

@@ -16,6 +16,7 @@
             <dwr:include method="mergeCustomer" />
             <dwr:include method="deleteCustomer" />
             <dwr:include method="getAllCutomers" />
+            <dwr:include method="generateAppkey" />
             <dwr:include method="getByUserIds" />
             <dwr:include method="persistUsers" />
             <dwr:include method="mergeUsers" />
