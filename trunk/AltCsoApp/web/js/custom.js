@@ -13,6 +13,7 @@ $(document).ready(function() {
         $("#dialog").dialog();
     });
     // Tab 1
+    dwr.engine.beginBatch();
     $("#goTab1").click(function() {
         AltCsoAjax.searchCustomerByName($("#searchTab1").val(), function(data){
             var html = '';
@@ -113,7 +114,7 @@ $(document).ready(function() {
             alert("deleted");
         })
     })
-    dwr.engine.beginBatch();
+    // dwr.engine.beginBatch();
     AltCsoAjax.getAllCsoProfiles(function(data){
         var html = '';
         $.each(data,function(i,v){
@@ -141,7 +142,7 @@ $(document).ready(function() {
         $("#engineNameTab2").html(html2);
         $("#engineIdTab2").html(html3);
     })
-    dwr.engine.endBatch();
+    // dwr.engine.endBatch();
     // End Tab2
     // Tab 3
     $("#userCancelBtn").click(function() {
@@ -201,6 +202,7 @@ $(document).ready(function() {
         displayTab5();
     })
     displayTab5();
+    dwr.engine.endBatch();
 // End Tab 5
 });
 // Tab 1
