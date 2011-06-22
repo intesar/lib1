@@ -2,6 +2,7 @@ package com.cisco.altcso.service;
 
 import com.cisco.altcso.domain.CsoProfile;
 import com.cisco.altcso.domain.Customer;
+import com.cisco.altcso.domain.TransEngineProfileMap;
 import com.cisco.altcso.domain.TranslationStatus;
 import com.cisco.altcso.domain.Users;
 import com.cisco.altcso.exception.DuplicateUserIdException;
@@ -91,7 +92,7 @@ public class AltCsoAjax {
         }
         throw new ErrorProcessingRequest();
     }
-    
+
     public Long generateAppkey() {
         try {
             return this.altCsoService.generateAppkey();
@@ -145,6 +146,33 @@ public class AltCsoAjax {
         throw new ErrorProcessingRequest();
     }
 
+    public List<CsoProfile> getAllCsoProfiles() {
+        try {
+            return this.altCsoService.getAllCsoProfiles();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new NoDataFoundException();
+        }
+    }
+
+    public List<Customer> getAllCustomers() {
+        try {
+            return this.altCsoService.getAllCustomers();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new NoDataFoundException();
+        }
+    }
+
+    public List<TransEngineProfileMap> getAllTransEngineProfileMaps() {
+        try {
+            return this.altCsoService.getAllTransEngineProfileMaps();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new NoDataFoundException();
+        }
+    }
+
     //////////////////////////////////////
     //  Tab 3
     //////////////////////////////////////
@@ -171,8 +199,8 @@ public class AltCsoAjax {
     public void persistUsers(String userId, String firstName, String lastName) {
         try {
             List<Users> users = this.altCsoService.getByUserIds(userId);
-            for (Users u : users ) {
-                if ( userId.equalsIgnoreCase(u.getUserId())){
+            for (Users u : users) {
+                if (userId.equalsIgnoreCase(u.getUserId())) {
                     throw new DuplicateUserIdException();
                 }
             }

@@ -2,10 +2,12 @@ package com.cisco.altcso.service;
 
 import com.cisco.altcso.dao.CsoProfileDao;
 import com.cisco.altcso.dao.CustomerDao;
+import com.cisco.altcso.dao.TransEngineProfileMapDao;
 import com.cisco.altcso.dao.TranslationStatusDao;
 import com.cisco.altcso.dao.UsersDao;
 import com.cisco.altcso.domain.CsoProfile;
 import com.cisco.altcso.domain.Customer;
+import com.cisco.altcso.domain.TransEngineProfileMap;
 import com.cisco.altcso.domain.TranslationStatus;
 import com.cisco.altcso.domain.Users;
 import java.util.Date;
@@ -30,6 +32,8 @@ public class AltCsoServiceImpl implements AltCsoService {
     protected UsersDao usersDao;
     @Autowired
     protected CsoProfileDao csoProfileDao;
+    @Autowired
+    protected TransEngineProfileMapDao transEngineProfileMapDao;
 
     @Override
     public List<TranslationStatus> getActiveTranslationStatuses() {
@@ -47,7 +51,7 @@ public class AltCsoServiceImpl implements AltCsoService {
         customer.setCreateDate(new Date());
         customerDao.persist(customer);
     }
-    
+
     @Override
     public void mergeCustomer(Customer customer) {
         customerDao.merge(customer);
@@ -80,7 +84,7 @@ public class AltCsoServiceImpl implements AltCsoService {
         user.setUserId(userId);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        
+
         this.usersDao.persist(user);
     }
 
@@ -114,10 +118,25 @@ public class AltCsoServiceImpl implements AltCsoService {
     @Override
     public Long generateAppkey() {
         Long currentKey = this.customerDao.findMaxOfAppkey();
-        if ( currentKey == null ) {
+        if (currentKey == null) {
             currentKey = 1L;
         }
         return ++currentKey;
     }
+
+    @Override
+    public List<CsoProfile> getAllCsoProfiles() {
+        return this.csoProfileDao.findAll();
+    }
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        return this.customerDao.findAll();
+    }
+
+    @Override
+    public List<TransEngineProfileMap> getAllTransEngineProfileMaps() {
+        return this.transEngineProfileMapDao.findAll();
     
+    }
 }
