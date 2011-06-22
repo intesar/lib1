@@ -113,6 +113,35 @@ $(document).ready(function() {
             alert("deleted");
         })
     })
+    dwr.engine.beginBatch();
+    AltCsoAjax.getAllCsoProfiles(function(data){
+        var html = '';
+        $.each(data,function(i,v){
+            html += '<option value="'+ v.csoProfileId +'">' + v.languagePair +'</option>';
+        })
+        $("#languageTab2").html(html);
+    })
+    AltCsoAjax.getAllCustomers(function(data){
+        var html = '';
+        $.each(data,function(i,v){
+            html += '<option value="'+ v.customerId +'">' + v.groupName +'</option>';
+        })
+        $("#customerNameTab2").html(html);
+    })
+    AltCsoAjax.getAllTransEngineProfileMaps(function(data){
+        var html1 = '';
+        var html2 = '';
+        var html3 = '';
+        $.each(data,function(i,v){
+            html1 += '<option value="'+ v.transEngineProfileMapId +'">' + v.transEngineUrl +'</option>';
+            html2 += '<option value="'+ v.transEngineProfileMapId +'">' + v.transEngineProfileName +'</option>';
+            html3 += '<option value="'+ v.transEngineProfileMapId +'">' + v.transEngineProfileId +'</option>';
+        })
+        $("#urlTab2").html(html1);
+        $("#engineNameTab2").html(html2);
+        $("#engineIdTab2").html(html3);
+    })
+    dwr.engine.endBatch();
     // End Tab2
     // Tab 3
     $("#userCancelBtn").click(function() {

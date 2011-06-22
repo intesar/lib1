@@ -24,6 +24,9 @@
             <dwr:include method="searchCsoProfiles" />
             <dwr:include method="mergeCsoProfile" />
             <dwr:include method="deleteCsoProfile" />
+            <dwr:include method="getAllCsoProfiles" />
+            <dwr:include method="getAllCustomers" />
+            <dwr:include method="getAllTransEngineProfileMaps" />
         </dwr:remote>
     </bean>
     

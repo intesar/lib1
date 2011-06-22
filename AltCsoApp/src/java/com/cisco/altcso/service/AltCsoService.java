@@ -2,6 +2,7 @@ package com.cisco.altcso.service;
 
 import com.cisco.altcso.domain.CsoProfile;
 import com.cisco.altcso.domain.Customer;
+import com.cisco.altcso.domain.TransEngineProfileMap;
 import com.cisco.altcso.domain.TranslationStatus;
 import com.cisco.altcso.domain.Users;
 import java.util.Date;
@@ -39,6 +40,12 @@ public interface AltCsoService {
     void mergeCsoProfile(CsoProfile csoProfile);
 
     void deleteCsoProfile(Long csoProfileId);
+    
+    List<CsoProfile> getAllCsoProfiles();
+    
+    List<Customer> getAllCustomers();
+    
+    List<TransEngineProfileMap> getAllTransEngineProfileMaps();
 
     //
     // tab-3
