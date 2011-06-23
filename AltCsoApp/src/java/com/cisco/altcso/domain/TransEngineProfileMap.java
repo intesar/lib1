@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Intesar Mohammed
  */
 @Entity
-@Table(name = "TRANS_ENGINE_PROFILE_MAP")
+@Table(name = "TRANS_ENGINE_PROFILE_MAP_1")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TransEngineProfileMap.findAll", query = "SELECT t FROM TransEngineProfileMap t"),
