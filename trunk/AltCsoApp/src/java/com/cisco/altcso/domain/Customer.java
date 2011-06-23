@@ -52,7 +52,7 @@ public class Customer implements Serializable {
     @Column(name = "GROUP_NAME")
     private String groupName;
     @Column(name = "APPKEY")
-    private Long appkey;
+    private String appkey;
     @Column(name = "EXPIRY_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date expiryDate;
@@ -89,11 +89,11 @@ public class Customer implements Serializable {
         this.groupName = groupName;
     }
 
-    public Long getAppkey() {
+    public String getAppkey() {
         return appkey;
     }
 
-    public void setAppkey(Long appkey) {
+    public void setAppkey(String appkey) {
         this.appkey = appkey;
     }
 

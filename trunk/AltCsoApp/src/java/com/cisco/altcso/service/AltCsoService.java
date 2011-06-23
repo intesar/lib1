@@ -30,7 +30,7 @@ public interface AltCsoService {
 
     void deleteCustomer(Long customerId);
     
-    Long generateAppkey();
+    String generateAppkey();
 
     //
     // tab-2
