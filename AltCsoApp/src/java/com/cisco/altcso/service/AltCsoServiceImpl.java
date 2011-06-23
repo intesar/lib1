@@ -10,6 +10,7 @@ import com.cisco.altcso.domain.Customer;
 import com.cisco.altcso.domain.TransEngineProfileMap;
 import com.cisco.altcso.domain.TranslationStatus;
 import com.cisco.altcso.domain.Users;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,12 +117,14 @@ public class AltCsoServiceImpl implements AltCsoService {
     }
 
     @Override
-    public Long generateAppkey() {
-        Long currentKey = this.customerDao.findMaxOfAppkey();
-        if (currentKey == null) {
-            currentKey = 1L;
-        }
-        return ++currentKey;
+    public String generateAppkey() {
+//        Long currentKey = this.customerDao.findMaxOfAppkey();
+//        if (currentKey == null) {
+//            currentKey = 1L;
+//        }
+//        return ++currentKey;
+        Long key = Calendar.getInstance().getTimeInMillis();
+        return String.valueOf(key);
     }
 
     @Override

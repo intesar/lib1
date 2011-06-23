@@ -93,7 +93,7 @@ public class AltCsoAjax {
         throw new ErrorProcessingRequest();
     }
 
-    public Long generateAppkey() {
+    public String generateAppkey() {
         try {
             return this.altCsoService.generateAppkey();
         } catch (Exception ex) {
