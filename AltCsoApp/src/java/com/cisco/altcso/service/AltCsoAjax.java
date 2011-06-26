@@ -37,8 +37,9 @@ public class AltCsoAjax {
             return list;
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new NoDataFoundException();
         }
-        throw new NoDataFoundException();
+        
     }
 
     /**
@@ -50,8 +51,9 @@ public class AltCsoAjax {
             altCsoService.mergeCustomer(customer);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     /**
@@ -63,8 +65,9 @@ public class AltCsoAjax {
             altCsoService.persistCustomer(customer);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     /**
@@ -76,8 +79,9 @@ public class AltCsoAjax {
             altCsoService.deleteCustomer(customerId);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     /**
@@ -89,8 +93,9 @@ public class AltCsoAjax {
             return this.altCsoService.getAllCutomers();
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     public String generateAppkey() {
@@ -98,8 +103,9 @@ public class AltCsoAjax {
             return this.altCsoService.generateAppkey();
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     //////////////////////////////////////
@@ -115,8 +121,9 @@ public class AltCsoAjax {
             return this.altCsoService.searchCsoProfiles(name);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new NoDataFoundException();
         }
-        throw new NoDataFoundException();
+        
     }
 
     /**
@@ -128,8 +135,9 @@ public class AltCsoAjax {
             this.altCsoService.mergeCsoProfile(csoProfile);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
 
     }
 
@@ -142,8 +150,9 @@ public class AltCsoAjax {
             this.altCsoService.deleteCsoProfile(csoProfileId);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     public List<CsoProfile> getAllCsoProfiles() {
@@ -186,8 +195,9 @@ public class AltCsoAjax {
             return this.altCsoService.getByUserIds(userId);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new NoDataFoundException();
         }
-        throw new NoDataFoundException();
+        
     }
 
     /**
@@ -207,8 +217,9 @@ public class AltCsoAjax {
             this.altCsoService.persistUsers(userId, firstName, lastName);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     /**
@@ -219,8 +230,9 @@ public class AltCsoAjax {
             this.altCsoService.mergeUsers(users);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     /**
@@ -232,8 +244,9 @@ public class AltCsoAjax {
             this.altCsoService.deleteUsers(userId);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 
     //////////////////////////////////////
@@ -264,8 +277,9 @@ public class AltCsoAjax {
             return altCsoService.getTranslationStatusesBetween(startDate, endDate, customerId);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new NoDataFoundException();
         }
-        throw new NoDataFoundException();
+        
     }
 
     //////////////////////////////////////
@@ -280,7 +294,8 @@ public class AltCsoAjax {
             return this.altCsoService.getActiveTranslationStatuses();
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new ErrorProcessingRequest();
         }
-        throw new ErrorProcessingRequest();
+        
     }
 }
