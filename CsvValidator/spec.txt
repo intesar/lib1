@@ -1,0 +1,15 @@
+\|
+Contact ID,N,R
+Device ID,N,R,
+CarePack SKU,T,R,
+Carepack AppID,T,R,
+Contract #,N,R,
+Date of Purchase,D,R,yyyy-MM-dd HH:mm:ss
+Pre Tax Price,N,R,
+Application List Price,N,R,
+Campaign ID,T,O,
+Promo Code,T,O,
+Country,T,R,
+Sales Tax,N,O,
+VAT Amount,N,O,
+Currency,T,R,
