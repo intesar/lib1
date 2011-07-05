@@ -33,7 +33,7 @@ public class CsvValidatorTest {
         boolean notOptional = false;
 
 
-        list.add(new Field(1, Type.NUMBER, notOptional));
+        list.add(new Field(1, "Contact ID", Type.NUMBER, notOptional, "\\d+"));
         list.add(new Field(2, Type.NUMBER, notOptional));
         list.add(new Field(3, Type.TEXT, notOptional));
         list.add(new Field(4, Type.TEXT, notOptional));
@@ -43,10 +43,10 @@ public class CsvValidatorTest {
         list.add(new Field(8, Type.NUMBER, notOptional));
         list.add(new Field(9, "Campaign ID", Type.TEXT, optional));
         list.add(new Field(10, "Promo Code", Type.TEXT, optional));
-        list.add(new Field(11, Type.TEXT, notOptional));
+        list.add(new Field(11, "Country", Type.TEXT, notOptional, "MX|US"));
         list.add(new Field(12, Type.NUMBER, optional));
-        list.add(new Field(13, Type.NUMBER, optional));
-        list.add(new Field(14, Type.TEXT, notOptional));
+        list.add(new Field(13, "Vat Amt", Type.NUMBER, optional, "\\d+.\\d*"));
+        list.add(new Field(14, "Currency", Type.TEXT, false, "USD|CAD|GBP|EUR|MXN"));
 
     }
 
@@ -66,9 +66,6 @@ public class CsvValidatorTest {
         validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_4.txt", false);
         validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_5.txt", false);
         
-        list.remove(new Field(14, Type.TEXT, true));
-        
-        list.add(new Field(14, "Currency", Type.TEXT, false, "USD|CAD|GBP|EUR|MXN"));
         validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_6.txt", true);
         
         validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_6_1.txt", false);
