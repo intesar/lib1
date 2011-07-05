@@ -65,11 +65,19 @@ public class CsvValidatorTest {
         validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_3.txt", false);
         validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_4.txt", false);
         validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_5.txt", false);
+        
+        list.remove(new Field(14, Type.TEXT, true));
+        
+        list.add(new Field(14, "Currency", Type.TEXT, false, "USD|CAD|GBP|EUR|MXN"));
+        validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_6.txt", true);
+        
+        validateAndPrint("CPD_20110626120000_TO_20110627120000_20110627120000_6_1.txt", false);
     }
 
     private void validateAndPrint(String filename, boolean isValid) {
         CsvValidator validator1 = new CsvValidatorImpl(filename, list, "\\|");
-        assertEquals(isValid, validator1.isValid());
         System.out.println(validator1.getValidationDetails());
+        assertEquals(isValid, validator1.isValid());
+        
     }
 }

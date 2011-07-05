@@ -166,10 +166,10 @@ public class CsvValidatorImpl implements CsvValidator {
 
         } catch (Exception ex) {
             this.errors.append("Invalid data ");
-            this.errors.append("Line # ");
+            this.errors.append("Line ");
             this.errors.append(this.count);
             this.errors.append(" Required ");
-            this.errors.append(f.getType());
+            this.errors.append(f.getRegex() != null ?  f.getRegex() : f.getType());
             this.errors.append(" found '");
             this.errors.append(token);
             this.errors.append("'");
