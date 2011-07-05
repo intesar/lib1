@@ -99,7 +99,8 @@ public class CsvValidatorImpl implements CsvValidator {
             totalErrors++;
         }
         String[] tokens = line.split(delimiter);
-        if (tokens.length != noOfFields) {
+        
+        if (tokens.length < noOfFields - 1) {
             this.errors.append("line ");
             this.errors.append(this.count);
             this.errors.append(" is invalid, contains ");
@@ -126,7 +127,11 @@ public class CsvValidatorImpl implements CsvValidator {
                 handle(token, f);
                 index++;
             }
-        }
+            if ( tokens.length != noOfFields) {
+                Field f = map.get(index);
+                handle("", f);
+            }
+        } 
     }
 
     private boolean isFirstLineHeader(String[] tokens) {
