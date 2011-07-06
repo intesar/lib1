@@ -1,0 +1,23 @@
+<script type="text/javascript">
+    function checkpostal(){
+        var val = document.myform.myinput.value;
+        alert ( val + " " + isValid (val));
+
+    }
+    function isValid(txt) {
+        // valid chars are a to z, A to Z, 0 - 9 keep adding whatever you want to allow from the keyboard
+        var regex=/[^A-Za-z0-9.,]/ 
+        if (txt.search(regex)==-1) {
+            return true;
+        } else {
+            return false;
+        }
+            
+    }
+</script>
+
+<form name="myform">
+    <input type="text" name="myinput" size=15>
+    <input type="button" onClick="checkpostal()" value="check">
+
+</form>
