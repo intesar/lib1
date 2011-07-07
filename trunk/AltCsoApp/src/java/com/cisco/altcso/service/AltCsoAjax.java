@@ -10,6 +10,7 @@ import com.cisco.altcso.exception.ErrorProcessingRequest;
 import com.cisco.altcso.exception.NoDataFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -270,7 +271,7 @@ public class AltCsoAjax {
 
             DateFormat df1 = new SimpleDateFormat("MM/dd/yyyy");
             Date endDate = df1.parse(end);
-
+            
             System.out.println(startDate);
             System.out.println(endDate);
             System.out.println(customerId);
