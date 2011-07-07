@@ -31,4 +31,12 @@ public class TranslationStatusDaoImpl extends GenericDaoImpl<TranslationStatus, 
                 .setParameter("customerId", customerId)
                 .getResultList();
     }
+    
+    @Override
+    public List<TranslationStatus> findBetweenDates(Date start, Date end) {
+        return this.entityManager.createNamedQuery("TranslationStatus.findBetweenDates")
+                .setParameter("startTime", start)
+                .setParameter("endTime", end)
+                .getResultList();
+    }
 }
