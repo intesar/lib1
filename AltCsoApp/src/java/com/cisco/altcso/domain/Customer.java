@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Intesar Mohammed
  */
 @Entity
-@Table(name = "CUSTOMER_1")
+@Table(name = "CUSTOMER")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c"),
@@ -254,12 +254,12 @@ public class Customer implements Serializable {
 
     @Transient
     public String getFormatedCreateDate() {
+        String dt = "";
         if (createDate != null) {
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-            return df.format(createDate);
-        } else {
-            return "";
-        }
+            dt = df.format(createDate);
+        } 
+        return dt;
     }
 
     public void setFormatedCreateDate(String dt) {
@@ -267,12 +267,12 @@ public class Customer implements Serializable {
 
     @Transient
     public String getFormatedExpiryDate() {
+        String dt = "";
         if (expiryDate != null) {
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-            return df.format(expiryDate);
-        } else {
-            return "";
-        }
+            dt = df.format(expiryDate);
+        } 
+        return dt;
     }
 
     public void setFormatedExpiryDate(String dt) {

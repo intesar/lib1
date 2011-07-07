@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Intesar Mohammed
  */
 @Entity
-@Table(name = "TRANSLATION_CONTENT_")
+@Table(name = "TRANSLATION_CONTENT")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TranslationContent.findAll", query = "SELECT t FROM TranslationContent t"),
