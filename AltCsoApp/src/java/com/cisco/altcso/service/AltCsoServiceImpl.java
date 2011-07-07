@@ -66,7 +66,11 @@ public class AltCsoServiceImpl implements AltCsoService {
 
     @Override
     public List<TranslationStatus> getTranslationStatusesBetween(Date start, Date end, Long customerId) {
-        return this.translationStatusDao.findByCustomerIdBetweenDates(customerId, start, end);
+        if (customerId == 0) {
+            return this.translationStatusDao.findByCustomerIdBetweenDates(customerId, start, end);
+        } else {
+            return this.translationStatusDao.findBetweenDates(start, end);
+        }
     }
 
     @Override
@@ -140,6 +144,6 @@ public class AltCsoServiceImpl implements AltCsoService {
     @Override
     public List<TransEngineProfileMap> getAllTransEngineProfileMaps() {
         return this.transEngineProfileMapDao.findAll();
-    
+
     }
 }
