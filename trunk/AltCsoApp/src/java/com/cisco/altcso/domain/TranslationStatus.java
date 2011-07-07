@@ -23,11 +23,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Intesar Mohammed
  */
 @Entity
-@Table(name = "TRANSLATION_STATUS_1")
+@Table(name = "TRANSLATION_STATUS")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TranslationStatus.findByCustomerIdBetweenDates", query = "SELECT t FROM TranslationStatus t "
-    + "WHERE t.customerId.customerId = :customerId AND startTime >= :startTime AND endTime <= :endTime"),
+    + "WHERE t.customerId.customerId = :customerId AND t.startTime >= :startTime AND t.endTime <= :endTime"),
+    @NamedQuery(name = "TranslationStatus.findBetweenDates", query = "SELECT t FROM TranslationStatus t "
+    + "WHERE t.startTime >= :startTime AND t.endTime <= :endTime"),
     @NamedQuery(name = "TranslationStatus.findAll", query = "SELECT t FROM TranslationStatus t"),
     @NamedQuery(name = "TranslationStatus.findByRequestId", query = "SELECT t FROM TranslationStatus t WHERE t.requestId = :requestId"),
     @NamedQuery(name = "TranslationStatus.findByStatus", query = "SELECT t FROM TranslationStatus t WHERE t.status = :status"),
@@ -227,13 +229,13 @@ public class TranslationStatus implements Serializable {
         return getFormatedDate(startTime);
     }
 
-    private String getFormatedDate(Date dt) {
+    private String getFormatedDate(Date date) {
+        String dt = "";
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        if (dt != null) {
-            return df.format(dt);
-        } else {
-            return "";
-        }
+        if (date != null) {
+            dt = df.format(date);
+        } 
+        return dt;
     }
 
     @Transient
@@ -243,11 +245,11 @@ public class TranslationStatus implements Serializable {
 
     @Transient
     public Long getTime() {
+        Long time = 0L;
         if (endTime != null && startTime != null) {
-            return endTime.getTime() - startTime.getTime();
-        } else {
-            return 0L;
-        }
+            time = endTime.getTime() - startTime.getTime();
+        } 
+        return time;
     }
 
     @Override
