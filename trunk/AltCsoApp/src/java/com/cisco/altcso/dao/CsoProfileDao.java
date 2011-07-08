@@ -10,4 +10,6 @@ import java.util.List;
 public interface CsoProfileDao extends GenericDao<CsoProfile, Long> {
     
     List<CsoProfile> findByCsoProfileName(String name);
+    
+    List<CsoProfile> findByDefaultProfile(String code);
 }

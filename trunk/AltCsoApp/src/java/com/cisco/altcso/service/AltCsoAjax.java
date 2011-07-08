@@ -64,6 +64,8 @@ public class AltCsoAjax {
     public void persistCustomer(Customer customer) {
         try {
             altCsoService.persistCustomer(customer);
+            System.out.println( "id : " + customer.getCustomerId());
+            altCsoService.addDefaultProfiles(customer);
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new ErrorProcessingRequest();

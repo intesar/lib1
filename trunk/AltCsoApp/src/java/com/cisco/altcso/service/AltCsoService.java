@@ -23,6 +23,8 @@ public interface AltCsoService {
      * @return 
      */
     List<Customer> getCustomerByName(String keyword);
+    
+    void addDefaultProfiles(Customer customer);
 
     void mergeCustomer(Customer customer);
 
