@@ -132,20 +132,23 @@ public class Customer implements Serializable {
     @Transient
     public List<CsoProfile> getEnes() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
-            if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("enes")) {
-                list.add(c.getCsoProfileId());
+        //if (getCustomerCsoProfileMapList() != null) {
+            for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
+                if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("enes")) {
+                    list.add(c.getCsoProfileId());
+                }
             }
-        }
+        //}
         return list;
     }
-    
-    public void setEnes(List<CsoProfile> list){}
+
+    public void setEnes(List<CsoProfile> list) {
+    }
 
     @Transient
     public List<CsoProfile> getEnfr() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("enfr")) {
                 list.add(c.getCsoProfileId());
             }
@@ -153,12 +156,13 @@ public class Customer implements Serializable {
         return list;
     }
 
-    public void setEnfr(List<CsoProfile> list){}
-    
+    public void setEnfr(List<CsoProfile> list) {
+    }
+
     @Transient
     public List<CsoProfile> getEnjp() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("enjp")) {
                 list.add(c.getCsoProfileId());
             }
@@ -166,12 +170,13 @@ public class Customer implements Serializable {
         return list;
     }
 
-    public void setEnjp(List<CsoProfile> list){}
-    
+    public void setEnjp(List<CsoProfile> list) {
+    }
+
     @Transient
     public List<CsoProfile> getEnpt() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("enpt")) {
                 list.add(c.getCsoProfileId());
             }
@@ -182,7 +187,7 @@ public class Customer implements Serializable {
     @Transient
     public List<CsoProfile> getEnzh() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("enzh")) {
                 list.add(c.getCsoProfileId());
             }
@@ -190,12 +195,13 @@ public class Customer implements Serializable {
         return list;
     }
 
-    public void setEnzh(List<CsoProfile> list){}
-    
+    public void setEnzh(List<CsoProfile> list) {
+    }
+
     @Transient
     public List<CsoProfile> getEsen() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("esen")) {
                 list.add(c.getCsoProfileId());
             }
@@ -203,12 +209,13 @@ public class Customer implements Serializable {
         return list;
     }
 
-    public void setEsen(List<CsoProfile> list){}
-    
+    public void setEsen(List<CsoProfile> list) {
+    }
+
     @Transient
     public List<CsoProfile> getFren() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("fren")) {
                 list.add(c.getCsoProfileId());
             }
@@ -219,7 +226,7 @@ public class Customer implements Serializable {
     @Transient
     public List<CsoProfile> getJpen() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("jpen")) {
                 list.add(c.getCsoProfileId());
             }
@@ -227,12 +234,13 @@ public class Customer implements Serializable {
         return list;
     }
 
-    public void setJpen(List<CsoProfile> list){}
-    
+    public void setJpen(List<CsoProfile> list) {
+    }
+
     @Transient
     public List<CsoProfile> getPten() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("pten")) {
                 list.add(c.getCsoProfileId());
             }
@@ -243,14 +251,16 @@ public class Customer implements Serializable {
     @Transient
     public List<CsoProfile> getZhen() {
         List<CsoProfile> list = new ArrayList<CsoProfile>();
-        for (CustomerCsoProfileMap c : customerCsoProfileMapList) {
+        for (CustomerCsoProfileMap c : getCustomerCsoProfileMapList()) {
             if (c.getCsoProfileId().getLanguagePair().equalsIgnoreCase("zhen")) {
                 list.add(c.getCsoProfileId());
             }
         }
         return list;
     }
-    public void setZhen(List<CsoProfile> list){}
+
+    public void setZhen(List<CsoProfile> list) {
+    }
 
     @Transient
     public String getFormatedCreateDate() {
@@ -258,7 +268,7 @@ public class Customer implements Serializable {
         if (createDate != null) {
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
             dt = df.format(createDate);
-        } 
+        }
         return dt;
     }
 
@@ -271,7 +281,7 @@ public class Customer implements Serializable {
         if (expiryDate != null) {
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
             dt = df.format(expiryDate);
-        } 
+        }
         return dt;
     }
 
@@ -287,7 +297,11 @@ public class Customer implements Serializable {
     }
 
     public List<CustomerCsoProfileMap> getCustomerCsoProfileMapList() {
-        return customerCsoProfileMapList;
+        List list =  customerCsoProfileMapList;
+        if ( list == null ) {
+            list = new ArrayList<CustomerCsoProfileMap>();
+        }
+        return list;
     }
 
     public void setCustomerCsoProfileMapList(List<CustomerCsoProfileMap> customerCsoProfileMapList) {

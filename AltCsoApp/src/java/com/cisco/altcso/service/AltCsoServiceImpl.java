@@ -1,12 +1,14 @@
 package com.cisco.altcso.service;
 
 import com.cisco.altcso.dao.CsoProfileDao;
+import com.cisco.altcso.dao.CustomerCsoProfileMapDao;
 import com.cisco.altcso.dao.CustomerDao;
 import com.cisco.altcso.dao.TransEngineProfileMapDao;
 import com.cisco.altcso.dao.TranslationStatusDao;
 import com.cisco.altcso.dao.UsersDao;
 import com.cisco.altcso.domain.CsoProfile;
 import com.cisco.altcso.domain.Customer;
+import com.cisco.altcso.domain.CustomerCsoProfileMap;
 import com.cisco.altcso.domain.TransEngineProfileMap;
 import com.cisco.altcso.domain.TranslationStatus;
 import com.cisco.altcso.domain.Users;
@@ -35,6 +37,8 @@ public class AltCsoServiceImpl implements AltCsoService {
     protected CsoProfileDao csoProfileDao;
     @Autowired
     protected TransEngineProfileMapDao transEngineProfileMapDao;
+    @Autowired
+    protected CustomerCsoProfileMapDao customerCsoProfileMapDao;
 
     @Override
     public List<TranslationStatus> getActiveTranslationStatuses() {
@@ -50,7 +54,21 @@ public class AltCsoServiceImpl implements AltCsoService {
     @Override
     public void persistCustomer(Customer customer) {
         customer.setCreateDate(new Date());
+        if ( customer.getAppkey() == null || customer.getAppkey().length() ==0 ) {
+            customer.setAppkey(generateAppkey());
+        }
         customerDao.persist(customer);
+    }
+
+    @Override
+    public void addDefaultProfiles(Customer customer) {
+        List<CsoProfile> list = this.csoProfileDao.findByDefaultProfile("Y");
+        for (CsoProfile profile : list) {
+            CustomerCsoProfileMap map = new CustomerCsoProfileMap();
+            map.setCsoProfileId(profile);
+            map.setCustomerId(customer);
+            this.customerCsoProfileMapDao.persist(map);
+        }
     }
 
     @Override

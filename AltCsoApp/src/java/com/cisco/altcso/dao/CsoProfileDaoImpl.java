@@ -20,4 +20,11 @@ public class CsoProfileDaoImpl extends GenericDaoImpl<CsoProfile, Long> implemen
                 .setParameter("csoProfileName", "%" + name + "%")
                 .getResultList();
     }
+
+    @Override
+    public List<CsoProfile> findByDefaultProfile(String code) {
+        return this.entityManager.createNamedQuery("CsoProfile.findByDefaultProfile")
+                .setParameter("defaultProfile", code)
+                .getResultList();
+    }
 }

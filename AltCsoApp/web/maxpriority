@@ -1,0 +1,26 @@
+management.html                        
+
+<!--<input type="text" width="210" id="maximumPriorityTab1"/> -->
+                            <select id="maximumPriorityTab1">
+                                <option value="1">Urgent</option>
+                                <option value="2">High</option>
+                                <option value="3">Medium</option>
+                                <option value="4">Low</option>
+                            </select>
+
+
+Custom.js
+$("#cancelTab1").click(function() {
+        customer_ = null;
+        $("#customerIdTab1").html("");
+        $("#createdDateTab1").html("");
+        $("#customerNameTab1").val("");
+        $("#appKeyTab1").html("");
+        $("#expirationDateTab1").val("");
+        $("#maximumPriorityTab1").val("1"); // change is here
+        $("input[name='gtmx']").each(function() {
+            if($(this).val() == "N") {
+                $(this).attr("checked","checked");
+            }
+        })
+    })
