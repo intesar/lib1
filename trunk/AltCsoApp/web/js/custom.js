@@ -47,7 +47,7 @@ $(document).ready(function() {
         $("#customerNameTab1").val("");
         $("#appKeyTab1").html("");
         $("#expirationDateTab1").val("");
-        $("#maximumPriorityTab1").val("");
+        $("#maximumPriorityTab1").val("1");
         $("input[name='gtmx']").each(function() {
             if($(this).val() == "N") {
                 $(this).attr("checked","checked");
