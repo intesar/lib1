@@ -53,6 +53,17 @@ public class AltCsoServiceImpl implements AltCsoService {
 
     @Override
     public void persistCustomer(Customer customer) {
+        List<Customer> c = null;
+        try {
+             c = customerDao.findByGroupName(customer.getGroupName());
+            if ( c != null && !c.isEmpty() ) {
+                throw new RuntimeException("Username is already in use");
+            }
+        } catch ( Exception ex) {
+             if ( c != null && !c.isEmpty() ) {
+                throw new RuntimeException("Username is already in use");
+            }
+        }
         customer.setCreateDate(new Date());
         if ( customer.getAppkey() == null || customer.getAppkey().length() ==0 ) {
             customer.setAppkey(generateAppkey());
