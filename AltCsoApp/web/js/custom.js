@@ -103,8 +103,23 @@ $(document).ready(function() {
         })
     })
     $("#saveTab2").click(function(){
-        profile_.csoProfileName = $("#profileNameTab2").val();
+        var name = $("#profileNameTab2").val();
+        if ( profile_.csoProfileName != name ) {
+            profile_ = {
+                csoProfileId:null, 
+                csoProfileName:name, 
+                defaultProfile:null, 
+                languagePair:null, 
+                customerName:null, 
+                transEngineProfileMapId:null
+            };
+        } 
         profile_.defaultProfile = $("input[name='hyouka']:checked").val();
+        profile_.languagePair = $("#languageTab2 option:selected").text();
+        profile_.customerName = $("#customerNameTab2 option:selected").text();
+        //TODO
+        //profile_.transEngineProfileMapId.transEngineProfileMapId = $("#engineIdTab2").val();
+        
         AltCsoAjax.mergeCsoProfile(profile_, function(){
             alert("saved");
         })
