@@ -55,17 +55,17 @@ public class AltCsoServiceImpl implements AltCsoService {
     public void persistCustomer(Customer customer) {
         List<Customer> c = null;
         try {
-             c = customerDao.findByGroupName(customer.getGroupName());
-            if ( c != null && !c.isEmpty() ) {
+            c = customerDao.findByGroupName(customer.getGroupName());
+            if (c != null && !c.isEmpty()) {
                 throw new RuntimeException("Username is already in use");
             }
-        } catch ( Exception ex) {
-             if ( c != null && !c.isEmpty() ) {
+        } catch (Exception ex) {
+            if (c != null && !c.isEmpty()) {
                 throw new RuntimeException("Username is already in use");
             }
         }
         customer.setCreateDate(new Date());
-        if ( customer.getAppkey() == null || customer.getAppkey().length() ==0 ) {
+        if (customer.getAppkey() == null || customer.getAppkey().length() == 0) {
             customer.setAppkey(generateAppkey());
         }
         customerDao.persist(customer);
@@ -140,7 +140,13 @@ public class AltCsoServiceImpl implements AltCsoService {
 
     @Override
     public void mergeCsoProfile(CsoProfile csoProfile) {
-        if ( csoProfile.getCsoProfileId() == null ) {
+        if (csoProfile.getTransEngineProfileMapId() != null) {
+            Long id = csoProfile.getTransEngineProfileMapId().getTransEngineProfileId();
+            TransEngineProfileMap map = this.transEngineProfileMapDao.find(id);
+            csoProfile.setTransEngineProfileMapId(map);
+        }
+
+        if (csoProfile.getCsoProfileId() == null) {
             this.csoProfileDao.persist(csoProfile);
         } else {
             this.csoProfileDao.merge(csoProfile);
