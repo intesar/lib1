@@ -140,7 +140,11 @@ public class AltCsoServiceImpl implements AltCsoService {
 
     @Override
     public void mergeCsoProfile(CsoProfile csoProfile) {
-        this.csoProfileDao.merge(csoProfile);
+        if ( csoProfile.getCsoProfileId() == null ) {
+            this.csoProfileDao.persist(csoProfile);
+        } else {
+            this.csoProfileDao.merge(csoProfile);
+        }
     }
 
     @Override
